@@ -8,7 +8,6 @@
   	</settings>
   	<typeAliases>
   		<typeAlias type="com.commu.team3.dto.MemberDTO" alias="memberdto" />
-  		<typeAlias type="com.commu.team3.VO.MemberVO" alias="MemberVO" />
   	</typeAliases>
   	<mappers>
   		<mapper resource="mybatis/mapper/sql_mapping.xml"/>

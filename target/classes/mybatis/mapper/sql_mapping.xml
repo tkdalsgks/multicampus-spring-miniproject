@@ -3,9 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.commu.team3.dao.IMemberDAO">
-	<select id="memberlist" resultType="memberdto">
-		select * from member
-	</select>
+
 
 	<insert id="insertmember" parameterType="memberdto">
 		insert into member

@@ -1,30 +1,19 @@
 package com.commu.team3.dao;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.commu.team3.VO.MemberVO;
 import com.commu.team3.dto.MemberDTO;
 
 @Repository("commudao")
-public class IMemberDAO {
+public class MemberDAO {
 	@Autowired
 	SqlSession session;
 	
-	public List<MemberDTO> memberlist() {
-		List<MemberDTO> list = session.selectList("memberlist");
-		return list;
-	}
-	
+	// 회원가입
 	public int insertmember(MemberDTO dto) {
 		int insertrow = session.insert("insertmember", dto);
 		return insertrow;
 	}
-	
-	public int Login(MemberVO vo) throws Exception {
-        return session.selectOne("Member.Login", vo);
-    }
 }

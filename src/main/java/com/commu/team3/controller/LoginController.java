@@ -7,13 +7,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.commu.team3.VO.MemberVO;
 import com.commu.team3.dto.MemberDTO;
 import com.commu.team3.service.MemberService;
-import com.commu.team3.service.MemberServiceImpl;
 
 @Controller
 public class LoginController {
@@ -21,26 +18,47 @@ public class LoginController {
 	@Qualifier("commuservice")
 	MemberService service;
 	
-	// login.jsp
-	@GetMapping("/login")
-	public String login() {
-		return "login";
+	
+	@GetMapping("login")
+	public void login() {}
+	
+	@PostMapping("login")
+	public String login(String userId
+					, String userPwd
+					, HttpSession session
+					, RedirectAttributes redirectAttributes) {
+		
+		MemberDTO dto = service.authenticateUser(userId, userPwd);
+		
+		if(dto == null) {
+			redirectAttributes.addAttribute("msg","아이디나 비밀번호가 틀렸습니다");
+			return "redirect:/member/login";
+		}
+		
+		session.setAttribute("authenticated", dto);
+		return "redirect:/";
 	}
 	
-	@PostMapping("/login")
-	public String Login(@RequestParam("userId") String userId, @RequestParam("userPwd") String userPwd) throws Exception {
-		String path = "";
-		MemberVO vo = new MemberVO();
-		vo.setUserId(userId);
-		vo.setUserPwd(userPwd);
-		int result = service.Login(vo);
-		if(result == 1) {
-			path = "/";
-		} else {
-			path = "/login";
-		}
-		return path;
+	@GetMapping("logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("authenticated");
+		return "redirect:/";
 	}
+	
+//	@PostMapping("/login")
+//	public String Login(@RequestParam("userId") String userId, @RequestParam("userPwd") String userPwd) throws Exception {
+//		String path = "";
+//		MemberDTO dto = new MemberDTO();
+//		dto.setUserId(userId);
+//		dto.setUserPwd(userPwd);
+//		int result = service.Login(dto);
+//		if(result == 1) {
+//			path = "/";
+//		} else {
+//			path = "/";
+//		}
+//		return path;
+//	}
 	
 	// mypage.jsp
 	@GetMapping("/mypage")

@@ -94,7 +94,10 @@
     </h1>
     <div id="headerlogin">
       <ul>
-        <li><a href="<c:url value='/login' />">로그인</a></li>
+        <li>
+        	<c:if test="${member != null }"><a href="<c:url value='/logout' />">로그아웃</a></c:if>
+        	<c:if test="${member == null }"><a href="<c:url value='/login' />">로그인</a></c:if>
+        </li>
         <li><a href="<c:url value='/mypage' />">마이페이지</a></li>
         <li><a href="<c:url value='/agreement' />">회원가입</a></li>
       </ul>
