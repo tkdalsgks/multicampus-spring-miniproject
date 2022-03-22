@@ -1,4 +1,4 @@
-package test;
+package com.commu.team3.dao;
 
 import java.util.List;
 
@@ -6,8 +6,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.commu.team3.dto.MemberDTO;
+
 @Repository("commudao")
-public class MemberDAO {
+public class IMemberDAO {
 	@Autowired
 	SqlSession session;
 	
