@@ -10,9 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.commu.team3.service.MemberService;
+
 
 @Controller
 public class IndexController {
+	@Autowired
+	@Qualifier("commuservice")
+	MemberService service;
 	
 	// index.jsp
 	@GetMapping("/")
@@ -32,51 +37,6 @@ public class IndexController {
 		return "header_login";
 	}
 	
-	// 로그인 ------------------
-	// login.jsp
-	@GetMapping("/login")
-	public String login() {
-		return "login";
-	}
-//	@PostMapping("/login")
-//	public ModelAndView login(MemberDTO dto) {
-//		int result = service.insertmember(dto);
-//		ModelAndView mv = new ModelAndView();
-//		mv.addObject("result", result);
-//		mv.setViewName("login");
-//		return mv;
-//	}
-	
-	// mypage.jsp
-	@GetMapping("/mypage")
-	public String mypage () {
-		return "mypage";
-	}
-	// -------------------------
-	
-	// 회원가입 ----------------
-	
-//	@PostMapping("/register")
-//	public ModelAndView register(MemberDTO dto) {
-//		int result = service.insertmember(dto);
-//		ModelAndView mv = new ModelAndView();
-//		mv.addObject("result", result);
-//		mv.setViewName("register");
-//		return mv;
-//	}
-	
-	// selectregister.jsp
-	@GetMapping("/select")
-	public String selectregister() {
-		return "selectregister";
-	}
-	
-	// agreement.jsp
-	@GetMapping("/agreement")
-	public String agreement() {
-		return "agreement";
-	}
-	// -------------------------
 	
 	// 자유게시판 --------------
 	// freeboard.jsp

@@ -4,15 +4,15 @@
 
 <mapper namespace="com.commu.team3.dao.IMemberDAO">
 	<select id="memberlist" resultType="memberdto">
-		select * from member_table;
+		select * from member
 	</select>
 
 	<insert id="insertmember" parameterType="memberdto">
-		insert into member_table
-		values(#{id},#{password},#{userName},#{phone},#{email},#{address});
+		insert into `multicomdb`.`member` (`userId`, `userPwd`, `userName`, `userEmail`)
+		values(#{userId},#{userPwd},#{userName},#{userEmail})
 	</insert>
 
-	<update id="updatemember" parameterType="memberdto">
+	<!-- <update id="updatemember" parameterType="memberdto">
 		update member_table
 		set
 		userName=#{userName}, address=#{address}
@@ -29,7 +29,7 @@
 		select * from member_table where id=#{id};
 	</select>
 
-	<!-- parameterType="int[] 생략가능 -->
+	parameterType="int[] 생략가능
 	<select id="paginglist" resultType="memberdto">
 		select * from member_table limit
 		<foreach collection="array" item="num" separator=",">
@@ -48,5 +48,5 @@
 	<insert id="insertresult" parameterType="memberdto">
 		insert into member_table
 		value
-	</insert>
+	</insert> -->
 </mapper>

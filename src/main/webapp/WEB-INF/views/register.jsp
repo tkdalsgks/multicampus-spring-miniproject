@@ -145,29 +145,16 @@
     </script>
 
     <section class="section">
-      <form action="" method="post">
+      <form action="register" method="post">
         <table>
           <caption>
             <h2>회원가입 양식</h2>
           </caption>
           <tr>
-            <td class="col1">이름</td>
-            <td class="col2">
-              <input type="text" name="userName" id="userName" maxlength="5" class="col2input" />
-            </td>
-          </tr>
-          <tr>
             <td class="col1">아이디</td>
             <td class="col2">
               <input type="text" name="userId" id="userId" maxlength="14" class="col2input" />
               <input class="but1" type="button" value="중복확인" id="btn-idcheck" onclick="idCheck()" />
-            </td>
-          </tr>
-          <tr>
-            <td class="col1">이메일</td>
-            <td class="col2">
-              <input type="text" name="userEmail" id="userEmail" maxlength="14" class="col2input" />
-              <input class="but5" type="button" value="이메일인증" id="btn-emailcheck" onclick="emailCheck()" />
             </td>
           </tr>
           <tr>
@@ -179,15 +166,28 @@
           <tr>
             <td class="col1">비밀번호 확인</td>
             <td class="col2">
-              <input type="password" name="userPwd" id="userPwdConfirm" maxlength="16" class="col2input" />
+              <input type="password" name="userPwd2" id="userPwdConfirm" maxlength="16" class="col2input" />
+            </td>
+          </tr>
+          <tr>
+            <td class="col1">이름</td>
+            <td class="col2">
+              <input type="text" name="userName" id="userName" maxlength="5" class="col2input" />
+            </td>
+          </tr>
+          <tr>
+            <td class="col1">이메일</td>
+            <td class="col2">
+              <input type="text" name="userEmail" id="userEmail" maxlength="14" class="col2input" />
+              <input class="but5" type="button" value="이메일인증" id="btn-emailcheck" onclick="emailCheck()" />
             </td>
           </tr>
         </table>
-      </form>
       <div class="create">
-        <input class="but3" type="button" value="회원가입" id="confirm" />
+        <input class="but3" type="submit" value="회원가입" id="confirm" />
         <input class="but4" type="reset" value="초기화" />
       </div>
+      </form>
     </section>
 
     <!-- footer import -->

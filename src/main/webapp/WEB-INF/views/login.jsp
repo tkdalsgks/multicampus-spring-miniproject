@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="resources/css/styles.css" />
 
     <!-- JAVASCRIPT -->
-    <script src="resources/js/login.js"></script>
     <script src="resources/js/chatbot.js"></script>
     <script src="resources/js/sweetalert.min.js"></script>
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -34,14 +33,13 @@
           <script src="resources/js/kakaologin.js"></script>
         </div>
         <br />
-        <form action="/login" method="post">
-          <input type="text" class="id" id="id" name="id" placeholder="아이디" /><br />
-          <input type="password" class="pw" id="pw" name="pw" placeholder="암호" /><br />
-          <input type="password" class="pw2" id="pw2" name="pw2" placeholder="암호 확인" />
+        <form action="login" method="post">
+          <input type="text" class="id" id="userId" name="userId" placeholder="아이디" /><br />
+          <input type="password" class="pw" id="userPwd" name="userPwd" placeholder="암호" /><br />
           <br /><br />
-          <input type="button" value="로그인" class="login" id="login" onclick="display()" />
-        </form>
+          <input type="button" value="로그인" class="login" id="login" />
         <div id="result"></div>
+        </form>
       </div>
     </section>
 

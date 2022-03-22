@@ -4,13 +4,21 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MemberDTO {
-	private String userName, userId, userEmail, userPwd;
+	String userId, userPwd, userName, userEmail;
 
-	public MemberDTO() {
+	public String getUserId() {
+		return userId;
 	}
 
-	public MemberDTO(String userId, String userPwd) {
+	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+
+	public String getUserPwd() {
+		return userPwd;
+	}
+
+	public void setUserPwd(String userPwd) {
 		this.userPwd = userPwd;
 	}
 
@@ -22,14 +30,6 @@ public class MemberDTO {
 		this.userName = userName;
 	}
 
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
 	public String getUserEmail() {
 		return userEmail;
 	}
@@ -37,19 +37,5 @@ public class MemberDTO {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-
-	public String getUserPwd() {
-		return userPwd;
-	}
-
-	public void setUserPwd(String userPwd) {
-		this.userPwd = userPwd;
-	}
-
-	@Override
-	public String toString() {
-		return "MemberDTO [userName=" + userName + ", userId=" + userId + ", userEmail=" + userEmail + ", userPwd="
-				+ userPwd + "]";
-	}
-
+	
 }
