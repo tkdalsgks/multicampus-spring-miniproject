@@ -56,11 +56,13 @@ $(document).ready(function () {
                         </a>
                     </div>
                     <div>
-                        <a class="btnClass" id="alterBtn" name="alterBtn" href="questionalter>
-                        <!--<a class="btnClass" id="alterBtn" name="alterBtn" href=alterboard?quesBoard_num=${amount.seq}>-->
+                        <a class="btnClass" id="alterBtn" name="alterBtn" href="questionalter">
+                        <!--  
+                        	<a class="btnClass" id="alterBtn" name="alterBtn" href=alterboard?quesBoard_num=${amount.seq}>
+                        -->
                             질문 수정
                         </a>
-                        <a class="btnClass" id="delBtn" name="delBtn";">
+                        <a class="btnClass" id="delBtn" name="delBtn">
                             질문 삭제
                         </a>
                     </div>

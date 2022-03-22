@@ -65,7 +65,7 @@ $(document).ready(function () {
                           <a class="btnClass" id="alterBtn" name="alterBtn" href="freealter">
                               글 수정
                           </a>
-                          <a class="btnClass" id="delBtn" name="delBtn";">
+                          <a class="btnClass" id="delBtn" name="delBtn">
                               글 삭제
                           </a>
                       </div>

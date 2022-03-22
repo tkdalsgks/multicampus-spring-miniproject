@@ -1,4 +1,4 @@
-package test;
+package com.commu.team3.dto;
 
 public class MemberDTO {
 	String userName, userId, userEmail, userPwd;
