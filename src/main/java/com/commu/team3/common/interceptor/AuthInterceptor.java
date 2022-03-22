@@ -18,7 +18,7 @@ public class AuthInterceptor implements HandlerInterceptor{
 		
 		if(uriArr.length != 0) {
 			switch (uriArr[1]) {
-			case "member":
+			case "dto":
 				memberAuthorize(request,response,uriArr);
 				break;
 

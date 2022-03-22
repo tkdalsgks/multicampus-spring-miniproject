@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.commu.team3.VO.MemberVO;
 import com.commu.team3.dto.MemberDTO;
 
 @Repository("commudao")
@@ -18,8 +19,12 @@ public class IMemberDAO {
 		return list;
 	}
 	
-//	public int insertmember(MemberDTO dto) {
-//		int insertrow = session.insert("insertmember", dto);
-//		return insertrow;
-//	}
+	public int insertmember(MemberDTO dto) {
+		int insertrow = session.insert("insertmember", dto);
+		return insertrow;
+	}
+	
+	public int Login(MemberVO vo) throws Exception {
+        return session.selectOne("Member.Login", vo);
+    }
 }

@@ -44,13 +44,17 @@ DROP TABLE IF EXISTS `member`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `member` (
-  `userName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `userPwd` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `userEmail` varchar(50) DEFAULT NULL,
-  `userId` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`userId`),
-  UNIQUE KEY `userName` (`userName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+	`userId` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`userPwd` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`userName` VARCHAR(50) NOT multicomdbmemberNULL COLLATE 'utf8mb4_0900_ai_ci',
+	`userEmail` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	PRIMARY KEY (`userId`) USING BTREE,
+	UNIQUE INDEX `userName` (`userName`) USING BTREE
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+;
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
