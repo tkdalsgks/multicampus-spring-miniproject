@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.commu.team3.dao.IBoardDAO">
+
+	<select id="boardList" resultType="boarddto">
+		select * from multicomdb.board limit
+		<foreach collection="array" item="num" separator=",">
+			${num}
+		</foreach>
+	</select>
+	
+	<select id="boardDetail" resultType="boarddto" parameterType="int">
+		SELECT * FROM multicomdb.board WHERE boardNo = ${boardNo};
+	</select>
+	
+	<insert id="boardInsert">
+		insert into multicomdb.board (`boardName`, `boardContent`, `userName`)
+		values (#{boardName}, #{boardContent}, #{userName});
+	</insert>
+	
+	<update id="boardUpdate" parameterType="int">
+		update multicomdb.board set `boardName`=#{boardName}, `boardContent`= #{boardContent} WHERE  `boardNo`= ${boardNo};	
+	</update>
+	
+	<delete id="boardDelete">
+		DELETE FROM `multicomdb`.`board` WHERE  `boardNo`= ${boardNo};
+	</delete>
+</mapper>

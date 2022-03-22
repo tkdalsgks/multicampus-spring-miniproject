@@ -1,15 +1,19 @@
 package com.commu.team3.dto;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberDTO {
-	String userName, userId, userEmail, userPwd;
-	
-	public MemberDTO() {}
-	
+	private String userName, userId, userEmail, userPwd;
+
+	public MemberDTO() {
+	}
+
 	public MemberDTO(String userId, String userPwd) {
 		this.userId = userId;
 		this.userPwd = userPwd;
 	}
-	
+
 	public String getUserName() {
 		return userName;
 	}
@@ -41,4 +45,11 @@ public class MemberDTO {
 	public void setUserPwd(String userPwd) {
 		this.userPwd = userPwd;
 	}
+
+	@Override
+	public String toString() {
+		return "MemberDTO [userName=" + userName + ", userId=" + userId + ", userEmail=" + userEmail + ", userPwd="
+				+ userPwd + "]";
+	}
+
 }
