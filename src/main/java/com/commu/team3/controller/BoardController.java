@@ -25,15 +25,30 @@ public class BoardController {
 	@Qualifier("iboardservice")
 	IBoardService service;
 
-	// 리스트조회
-	@ResponseBody
-//	@RequestMapping(value = "/boardlist/{boardType}", method = RequestMethod.GET, produces = {
-//	"application/json;charset=utf-8" })
+	// 게시물 리스트 Model and View
 	@GetMapping("/boardlist/{boardType}")
-	public List<BoardDTO> boardList(@PathVariable String boardType, @RequestParam("page") int page) {
+	public String freeboard(@PathVariable String boardType, @RequestParam("page") int page, Model model) {
 		List<BoardDTO> list = service.boardList(boardType, page);
-		return list;
+		int pagenum = service.boardCount(boardType);
+		model.addAttribute("boardList", list);
+		model.addAttribute("pagenum", pagenum);
+
+		return "freeboard";
 	}
+
+	// 리스트조회
+//	@ResponseBody
+//	@GetMapping("/boardlist/{boardType}")
+//	public List<BoardDTO> boardList(@PathVariable String boardType, @RequestParam("page") int page) {
+//		List<BoardDTO> list = service.boardList(boardType, page);
+//		return list;
+//	}
+
+//	@ResponseBody
+//	@GetMapping("/boardCount/{boardType}")
+//	public int boardCount(@PathVariable String boardType) {
+//		return service.boardCount(boardType);
+//	}
 
 	// 작성페이지 매핑
 	@RequestMapping(value = "/boardinsert", method = RequestMethod.GET)

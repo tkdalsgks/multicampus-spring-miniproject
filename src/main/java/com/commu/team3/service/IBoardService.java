@@ -15,4 +15,6 @@ public interface IBoardService {
 	public void boardUpdate(BoardDTO dto);
 
 	public void boardDelete(int boardNo);
+
+	public int boardCount(String boardType);
 }

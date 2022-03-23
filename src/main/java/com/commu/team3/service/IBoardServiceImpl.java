@@ -13,6 +13,7 @@ import com.commu.team3.dto.BoardDTO;
 
 @Service("iboardservice")
 public class IBoardServiceImpl implements IBoardService {
+	private final static int BOARD_PER_PAGE = 10;
 
 	@Autowired
 	@Qualifier("iboarddao")
@@ -24,6 +25,18 @@ public class IBoardServiceImpl implements IBoardService {
 		page = (page - 1) * 10;
 		System.out.println(page);
 		return dao.boardList(boardType, page);
+	}
+
+	@Override
+	public int boardCount(String boardType) {
+		int total = dao.boardCount(boardType);
+		int pagenum = 0;
+		if (total % BOARD_PER_PAGE == 0) { // 10으로 고정
+			pagenum = total / BOARD_PER_PAGE;
+		} else {
+			pagenum = total / BOARD_PER_PAGE + 1; // 여분의 페이지1개를 추가하기 위해
+		}
+		return pagenum; // 필요한 페이지갯수 넘김
 	}
 
 	@Override

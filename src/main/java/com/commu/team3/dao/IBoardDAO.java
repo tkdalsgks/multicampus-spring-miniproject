@@ -34,5 +34,8 @@ public interface IBoardDAO {
 
 	// 삭제
 	public void boardDelete(int boardNo);
+	
+	//글 총갯수
+	public int boardCount(@Param("boardType") String boardType);
 
 }

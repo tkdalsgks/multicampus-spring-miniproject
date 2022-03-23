@@ -124,7 +124,7 @@
           <!-- 헤더 메뉴 -->
           <div id="menu">
             <ul>
-              <li id="freeboard"><a href="<c:url value='/free' />">자유게시판</a></li>
+              <li id="freeboard"><a href="<c:url value='/boardlist/free?page=1' />">자유게시판</a></li>
               <li id="qboard"><a href="<c:url value='/question' />">질문게시판</a></li>
               <li id="qboard"><a href="<c:url value='/anonymity' />">익명게시판</a></li>
               <li id=""><a href="<c:url value='/chat' />">채팅방</a></li>

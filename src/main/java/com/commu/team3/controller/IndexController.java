@@ -35,10 +35,10 @@ public class IndexController {
 	
 	// 자유게시판 --------------
 	// freeboard.jsp
-	@GetMapping("/free")
-	public String freeboard() {
-		return "freeboard";
-	}
+//	@GetMapping("/free")
+//	public String freeboard() {
+//		return "freeboard";
+//	}
 	
 	// free_view.jsp
 	@GetMapping("/freeview")

@@ -13,6 +13,10 @@
 		 -->
 	</select>
 	
+	<select id="boardCount" resultType="int">
+		select count(*) from multicomdb.board where `boardType` IN (#{boardType});
+	</select>
+	
 	<select id="boardDetail" resultType="boarddto" parameterType="int">
 		SELECT * FROM multicomdb.board WHERE boardNo = ${boardNo};
 	</select>
