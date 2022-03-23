@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.commu.team3.dao.IMemberDAO">
+	<select id="memberlist" resultType="memberdto">
+		select * from member
+	</select>
+
+	<insert id="insertmember" parameterType="memberdto">
+		insert into `multicomdb`.`member` (`userId`, `userPwd`, `userName`, `userEmail`)
+		values(#{userId},#{userPwd},#{userName},#{userEmail})
+	</insert>
+
+	<!-- <update id="updatemember" parameterType="memberdto">
+		update member_table
+		set
+		userName=#{userName}, address=#{address}
+		where id=#{id};
+	</update>
+
+	<delete id="deletemember" parameterType="String">
+		delete from member_table
+		where id=#{id};
+	</delete>
+
+	<select id="member" resultType="memberdto"
+		parameterType="String">
+		select * from member_table where id=#{id};
+	</select>
+
+	parameterType="int[] 생략가능
+	<select id="paginglist" resultType="memberdto">
+		select * from member_table limit
+		<foreach collection="array" item="num" separator=",">
+			${num}
+		</foreach>
+	</select>
+
+	<select id="addressSearch" resultType="String">
+		select id from member_table where address in
+		<foreach collection="array" item="i" open="(" close=")"
+			separator=",">
+			#{i}
+		</foreach>
+	</select>
+
+	<insert id="insertresult" parameterType="memberdto">
+		insert into member_table
+		value
+	</insert> -->
+</mapper>

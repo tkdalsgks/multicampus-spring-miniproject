@@ -1,0 +1,47 @@
+body {
+        background-color: #ffffff;
+      }
+      section {
+        text-align: center;
+      }
+      .section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        transform: translateY(10%);
+      }
+      h3 {
+        display: inline-block;
+        margin-right: 20px;
+      }
+      #title {
+        width: 960px;
+        height: 30px;
+        overflow: scroll;
+        margin-bottom: 10px;
+      }
+      #contents {
+        width: 960px;
+        height: 500px;
+        vertical-align: top;
+        resize: none;
+      }
+      #button_div {
+        margin: 20px auto;
+      }
+      #alter {
+        margin-right: 25px;
+      }
+      #alter:hover {
+        background-color: gray;
+      }
+      #delete:hover {
+        background-color: gray;
+      }
+      input[type="submit"] {
+        background-color: rgb(230, 150, 80);
+        border-color: rgb(230, 150, 80);
+        width: 80px;
+        height: 40px;
+      }
