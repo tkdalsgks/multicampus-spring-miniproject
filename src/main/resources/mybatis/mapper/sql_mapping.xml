@@ -49,30 +49,11 @@
 		from `member`
 		where userId=#{userId}
 	</select>
-
-	<!-- <select id="member" resultType="memberdto"
-		parameterType="String">
-		select * from member_table where id=#{id};
+	
+	<!-- 이메일 중복체크 -->
+	<select id="checkEmail" resultType="int">
+		select count(*)
+		from member
+		where userEmail=#{userEmail}
 	</select>
-
-	parameterType="int[] 생략가능
-	<select id="paginglist" resultType="memberdto">
-		select * from member_table limit
-		<foreach collection="array" item="num" separator=",">
-			${num}
-		</foreach>
-	</select>
-
-	<select id="addressSearch" resultType="String">
-		select id from member_table where address in
-		<foreach collection="array" item="i" open="(" close=")"
-			separator=",">
-			#{i}
-		</foreach>
-	</select>
-
-	<insert id="insertresult" parameterType="memberdto">
-		insert into member_table
-		value
-	</insert> -->
 </mapper>

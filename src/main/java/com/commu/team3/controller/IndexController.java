@@ -2,7 +2,6 @@ package com.commu.team3.controller;
 
 import javax.inject.Inject;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -19,19 +18,6 @@ public class IndexController {
 	public String index() {
 		return "index";
 	}
-	
-	// header.jsp
-	@GetMapping("/header")
-	public String header() {
-		return "header";
-	}
-	
-	// header_login.jsp
-	@GetMapping("/headerlogin")
-	public String header_login() {
-		return "header_login";
-	}
-	
 	
 	// 자유게시판 --------------
 	// freeboard.jsp

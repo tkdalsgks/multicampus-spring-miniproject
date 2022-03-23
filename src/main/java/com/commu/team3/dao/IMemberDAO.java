@@ -10,6 +10,11 @@ import org.springframework.stereotype.Repository;
 
 import com.commu.team3.dto.MemberDTO;
 
+/**
+ * @author Sangmin, Han
+ * @author Gyeongjun, Jang
+ */
+
 @Repository("commudao")
 public class IMemberDAO {
 	@Inject
@@ -55,6 +60,12 @@ public class IMemberDAO {
 	// 아이디 중복체크
 	public int checkId(MemberDTO dto) {
 		int result = session.selectOne("checkId", dto);
+		return result;
+	}
+	
+	// 이메일 중복체크
+	public int checkEmail(MemberDTO dto) {
+		int result = session.selectOne("checkEmail", dto);
 		return result;
 	}
 	

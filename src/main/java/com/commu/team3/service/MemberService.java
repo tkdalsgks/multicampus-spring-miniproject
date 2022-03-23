@@ -29,6 +29,9 @@ public interface MemberService {
 	// 아이디 중복체크
 	public int checkId(MemberDTO dto);
 	
+	// 이메일 중복체크
+	public int checkEmail(MemberDTO dto);
+	
 	MemberDTO authenticateUser(String userId, String userPwd);
 
 }

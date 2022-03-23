@@ -91,11 +91,9 @@
     <script type="text/javascript">
       $(document).ready(function () {
         $("#confirm").click(function () {
-          if ($("#userName").val() == "") {
-            swal("이름을 입력해주세요.", "", "error");
-            $("#userName").focus();
-            return false;
-          }
+          //pw확인
+          var userPwd = $("#userPwd").val();
+          var userPwdConfirm = $("#userPwdConfirm").val();
           if ($("#userId").val() == "") {
             swal("아이디를 입력해주세요.", "", "error");
             $("#userId").focus();
@@ -106,16 +104,22 @@
             $("#userPwd").focus();
             return false;
           }
-          //pw확인
-          var userPwd = $("#userPwd").val();
-          var userPwdConfirm = $("#userPwdConfirm").val();
-
           if (userPwd != userPwdConfirm) {
             swal("암호가 일치하지 않습니다.", "", "error");
             $("#userPwdConfirm").focus();
             return false;
           }
-          swal("회원가입이 완료되었습니다.", "", "success");
+          if ($("#userName").val() == "") {
+            swal("이름을 입력해주세요.", "", "error");
+            $("#userName").focus();
+            return false;
+          } 
+          if ($("#userEmail").val() == "") {
+              swal("이메일을 입력해주세요.", "", "error");
+              $("#userEmail").focus();
+              return false;
+          }
+
           userlist.push($("#userId").val());
           location.href = "login";
         });
@@ -129,7 +133,9 @@
         var idCk = false;
 
         if (!idReg.test($("#userId").val())) {
-          swal("영문과 숫자 4~12자 이내로 입력하세요.", "", "warning");
+          swal("아이디 조건이 맞지 않습니다!", "영문과 숫자로 이루어진 4~12자 이내로 입력해주세요.", "warning");
+          $("#id_result").html("ex) mulcommu123");
+		  $("#id_result").css("color", "red");
           return;
         }
         
@@ -141,14 +147,50 @@
 				dataType: 'json',
 				success: function(data) {
 					if(data == 1) {
-						$("#result1").html("중복된 아이디 입니다.");
-					} else if(data == 0) {
-						$("#result1").html("사용 가능한 아이디 입니다.");
+						$("#id_result").html("사용중인 아이디 입니다. :p");
+						$("#id_result").css("color", "red");
+					} else if(data == 0 && idReg.test($("#userId").val())) {
+						$("#id_result").html("사용 가능한 아이디 입니다. :)");
+						$("#id_result").css("color", "blue");
 					}
 				}
 			});
 		});
       }
+      
+      function email_Check() {
+    	  var emailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    	  var userEmail = $('#userEmail').val();
+    	  
+    	  if(!emailReg.test($("#userEmail").val())) {
+    		  // 0 : 이메일 길이 / 문자열 검사
+    		  swal("이메일 조건이 맞지 않습니다!", "메일형식에 맞게 입력해주세요.", "warning");
+    		  $("#email_result").html("ex) admin@mulcommu.com");
+    		  $('#email_result').css('color', 'red');
+    	  } else if(userEmail == null) {
+    		  $('#email_result').html('이메일을 입력해주세요 :)');
+    		  $('#email_result').css('color', 'red');
+  			}
+    	  
+    	  $("#checkEmail").on("click", function() {
+  			$.ajax({
+  				url: '<%=request.getContextPath() %>/checkEmail',
+  				data: {"userEmail" : $("#userEmail").val()},
+  				type: 'post',
+  				dataType: 'json',
+  				success: function(data) {
+  					if(data == 1) {
+  						$("#email_result").html("사용중인 이메일 입니다. :p");
+  						$("#email_result").css("color", "red");
+  					} else if(data == 0 && emailReg.test($("#userEmail").val())) {
+  						$("#email_result").html("사용 가능한 이메일 입니다. :)");
+  						$("#email_result").css("color", "blue");
+  					}
+  				}
+  			});
+  		});
+      }
+    	  
     </script>
 
     <section class="section">
@@ -160,10 +202,10 @@
           <tr>
             <td class="col1">아이디</td>
             <td class="col2">
-              <input type="text" name="userId" id="userId" maxlength="14" class="col2input" />
+              <input type="text" name="userId" id="userId" maxlength="12" class="col2input" />
               <button class="but1" type="button" id="checkId" onclick="idCheck()">중복확인</button>
               <br />
-              <span id="result1"></span>
+              <span id="id_result"></span>
             </td>
           </tr>
           <tr>
@@ -188,13 +230,9 @@
             <td class="col1">이메일</td>
             <td class="col2">
               <input type="text" name="userEmail" id="userEmail" maxlength="14" class="col2input" />
-            </td>
-          </tr>
-          <tr>
-          	<td class="col1">인증번호</td>         
-          	<td class="col2">
-          	<input type="text" name="emailCheck" id="emailCheck" maxlength="14" class="col2input" />
-            <input class="but1" type="button" value="인증번호 확인" id="btn-emailcheck" onclick="emailCheck()" />
+              <button class="but1" type="button" id="checkEmail" onclick="email_Check()">이메일확인</button>
+              <br />
+              <span id="email_result"></span>
             </td>
           </tr>
         </table>
