@@ -26,7 +26,7 @@ public class BoardController {
 	public String boardList(Model model) {
 		List<BoardDTO> list = service.boardList();
 		model.addAttribute("list", list);
-		return "freeboard";
+		return "free";
 	}
 	
 	//작성페이지 매핑
@@ -39,7 +39,7 @@ public class BoardController {
 	@RequestMapping(value="/boardinsert", method = RequestMethod.POST)
 	public String boardInsert(BoardDTO dto) {
 		service.boardInsert(dto);
-		return "redirect:freeboard";
+		return "redirect:free";
 	}
 	
 	//상세페이지
@@ -62,13 +62,13 @@ public class BoardController {
 	@RequestMapping(value="/boardupdate", method = RequestMethod.POST)
 	public String boardUpdate(BoardDTO dto) {
 		service.boardUpdate(dto);
-		return "redirect:freeboard";
+		return "redirect:free";
 	}
 	
 	//데이터 삭제 처리
 	@RequestMapping(value="/boarddelete", method = RequestMethod.GET)
 	public String boardDelete(@RequestParam int boardNo) {
 		service.boardDelete(boardNo);
-		return "redirect:freeboard";
+		return "redirect:free";
 	}
 }

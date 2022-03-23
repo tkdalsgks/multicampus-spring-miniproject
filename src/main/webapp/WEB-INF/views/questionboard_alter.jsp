@@ -100,7 +100,7 @@
 
   <body>
     <!-- header import -->
-    <c:import url="/WEB-INF/views/header.jsp"></c:import>
+    <%@ include file="/WEB-INF/views/include/header.jsp" %>
     <!-- end of header import -->
 
     <section class="section">

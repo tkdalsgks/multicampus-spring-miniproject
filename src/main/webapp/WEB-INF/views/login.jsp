@@ -14,11 +14,35 @@
     <script src="resources/js/sweetalert.min.js"></script>
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
     <script src="resources/js/jquery-3.6.0.min.js"></script>
+    
+    <script type="text/javascript">
+    	$(function() {
+    		$("#btnLogin").click(function() {
+    			var userId=$("#userId").val();
+    			var userPwd=$("#userPwd").val();
+    			
+    			if(userId == "") {
+    				swal("아이디를 입력해주세요.", "", "error");
+    				$("#userId").focus();
+    				return;
+    			}
+    			if(userPwd == "") {
+    				swal("암호를 입력해주세요.", "", "error");
+    				$("#userPwd").focus();
+    				return;
+    			}
+    			// 폼 내부의 데이터를 전송할 주소
+    			document.form1.action="${path}/team3/user";
+    			document.form1.submit();	// 제출
+    		});
+    	});
+    </script>
+    
   </head>
 
   <body>
     <!-- header import -->
-    <c:import url="/WEB-INF/views/header.jsp"></c:import>
+    <%@ include file="/WEB-INF/views/include/header.jsp" %>
     <!-- end of header import -->
 
     <section>
@@ -33,18 +57,32 @@
           <script src="resources/js/kakaologin.js"></script>
         </div>
         <br />
-        <form action="login" method="post">
-          <input type="text" class="id" id="userId" name="userId" placeholder="아이디" /><br />
+        <form name="form1" method="post">
+          <input type="text" class="id" id="userId" name="userId" placeholder="아이디" autofocus /><br />
           <input type="password" class="pw" id="userPwd" name="userPwd" placeholder="암호" /><br />
           <br /><br />
-          <input type="button" value="로그인" class="login" id="login" />
-        <div id="result"></div>
+          <button type="button" class="login" id="btnLogin">로그인</button><br><br>
+          <c:if test="${msg == 'error' }">
+          	<script>
+          		$(function() {
+          			swal("아이디 또는 암호가 일치하지 않습니다.", "", "error");
+          		})
+          	</script>
+          </c:if>
+          <c:if test="${msg == 'logout' }">
+          	<script>
+          		$(function() {
+          			swal("로그아웃 되었습니다.", "", "error");
+          		})
+          	</script>
+          </c:if>
+          <button type="submit" class="login" id="btnRegister" onclick="location.href='/agreement'">회원가입</button>
         </form>
       </div>
     </section>
 
     <!-- footer import -->
-    <c:import url="/WEB-INF/views/footer.jsp"></c:import>
-    <!-- end of header import -->
+    <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+    <!-- end of footer import -->
   </body>
 </html>
