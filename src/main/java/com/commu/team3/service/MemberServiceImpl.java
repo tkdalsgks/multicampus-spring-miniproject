@@ -5,14 +5,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
-import com.commu.team3.dao.MemberDAO;
+import com.commu.team3.dao.IMemberDAO;
 import com.commu.team3.dto.MemberDTO;
 import com.commu.team3.repository.MemberRepository;
 
 @Service("commuservice")
 public class MemberServiceImpl implements MemberService {
 	@Inject
-	MemberDAO dao;
+	IMemberDAO dao;
 	
 	public MemberRepository memberRepository;
 	

@@ -24,26 +24,20 @@
     </div>
     <table style="text-align: center; border: 1px solid #dddddd; word-break: break-all; word-wrap: break-word">
       <thead>
-        <th colspan="6" style="background-color: #eeeeee; text-align: center; height: 3vw;">글</th>
+        <th colspan="6" style="background-color: #eeeeee; text-align: center; height: 3vw;">${dto.boardName }</th>
       </thead>
       <tbody>
         <tr>
           <td style="width: 20%; border: 1px solid #949494">작성자</td>
-          <td colspan="2" style="border: 1px solid #949494">윤성일</td>
+          <td colspan="2" style="border: 1px solid #949494">${dto.userName }</td>
 
           <td style="width: 20%; border: 1px solid #949494">작성일자</td>
-          <td colspan="2" style="border: 1px solid #949494">
-            <script>
-              let today = new Date();
-
-              document.write(today.toLocaleString());
-            </script>
-          </td>
+          <td colspan="2" style="border: 1px solid #949494">${dto.regdate }</td>
         </tr>
 
         <tr>
           <td>글 내용</td>
-          <td colspan="4" style="height: 600px; text-align: left; word-break: break-all; word-wrap: break-word; vertical-align: top"><br />안녕하세요</td>
+          <td colspan="4" style="height: 600px; text-align: left; word-break: break-all; word-wrap: break-word; vertical-align: top"><br />${dto.boardContent }</td>
         </tr>
       </tbody>
     </table>
@@ -51,11 +45,11 @@
 
     <br />
     <div style="text-align: center">
-      <button style="display: inline-block; background-color: rgb(230, 150, 80); border-color: rgb(230, 150, 80); width: 80px; height: 40px" onclick="location.href='free' ">목록</button>
-      <button id="btn1" style="display: inline-block; background-color: rgb(230, 150, 80); border-color: rgb(230, 150, 80); width: 80px; height: 40px" onclick="location.href='freealter'">
+      <button style="display: inline-block; background-color: rgb(230, 150, 80); border-color: rgb(230, 150, 80); width: 80px; height: 40px" onclick="location.href='boardlist' ">목록</button>
+      <button id="btn1" style="display: inline-block; background-color: rgb(230, 150, 80); border-color: rgb(230, 150, 80); width: 80px; height: 40px" onclick="location.href='boardupdate?boardNo=${dto.boardNo}'">
         글 수정
       </button>
-      <button id="btn2" style="display: inline-block; background-color: rgb(230, 150, 80); border-color: rgb(230, 150, 80); width: 80px; height: 40px" onclick="location.href='free'">글 삭제</button>
+      <button id="btn2" style="display: inline-block; background-color: rgb(230, 150, 80); border-color: rgb(230, 150, 80); width: 80px; height: 40px" onclick="location.href='location.href='boarddelete?boardNo=${dto.boardNo}'">글 삭제</button>
     </div>
     <script>
       document.getElementById("btn2").addEventListener("click", 삭제);

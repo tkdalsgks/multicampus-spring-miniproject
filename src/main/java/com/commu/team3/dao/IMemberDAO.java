@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.commu.team3.dto.MemberDTO;
 
 @Repository("commudao")
-public class MemberDAO {
+public class IMemberDAO {
 	@Inject
 	SqlSession session;
 	

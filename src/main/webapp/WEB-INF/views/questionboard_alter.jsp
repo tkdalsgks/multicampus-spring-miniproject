@@ -34,14 +34,14 @@
         margin-right: 20px;
       }
 
-      #title {
+      #boardName {
         width: 960px;
         height: 30px;
         overflow: scroll;
         margin-bottom: 10px;
       }
 
-      #contents {
+      #boardContent {
         width: 960px;
         height: 500px;
         vertical-align: top;
@@ -80,6 +80,20 @@
         $("#delete").on("click", function () {
           alert("게시물이 삭제되었습니다.");
         });
+        
+     // 수정 
+		$("#alter").on("click", function(){
+			formObj.attr("action", "/board/updateView");
+			formObj.attr("method", "get");
+			formObj.submit();				
+		})
+		
+		// 삭제
+		$(".delete_btn").on("click", function(){
+			formObj.attr("action", "/board/delete");
+			formObj.attr("method", "post");
+			formObj.submit();
+		})
       });
     </script>
   </head>
@@ -93,25 +107,27 @@
       <div id="header">
         <h2>질문 수정</h2>
       </div>
-
+      
+	<form action="boardupdate" method="post">
       <div id="wrap">
         <div id="title_div">
           <h3>제목</h3>
-          <input type="text" id="title" name="title" required /><br />
+          <input type="text" id="boardName" name="boardName" required /><br />
         </div>
         <div class="contents_div">
           <h3>내용</h3>
-          <textarea id="contents" name="contents" required></textarea><br />
+          <textarea id="boardContents" name="boardContent" required></textarea><br />
         </div>
-        <form id="button_div" action="question">
+        <div id="button_div">
           <input type="submit" id="alter" value="수정" />
           <input type="submit" id="delete" value="삭제" />
-        </form>
+      	</div>
       </div>
+    </form>
     </section>
 
     <!-- footer import -->
-    <%@ include file="/WEB-INF/views/include/footer.jsp" %>
-    <!-- end of footer import -->
+    <c:import url="/WEB-INF/views/footer.jsp"></c:import>
+    <!-- end of header import -->
   </body>
 </html>

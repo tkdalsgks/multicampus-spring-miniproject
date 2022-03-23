@@ -30,13 +30,19 @@
         display: inline-block;
         margin-right: 20px;
       }
-      #title {
+      #boardName {
         width: 960px;
         height: 30px;
         overflow: scroll;
         margin-bottom: 10px;
       }
-      #contents {
+      #userName {
+        width: 960px;
+        height: 30px;
+        overflow: scroll;
+        margin-bottom: 10px;
+      }
+      #boardContent {
         width: 960px;
         height: 500px;
         vertical-align: top;
@@ -56,42 +62,46 @@
       }
     </style>
 
-    <script>
-      $(document).ready(function () {
-        $("#wrap").on("submit", function (e) {
-          alert("게시물이 등록되었습니다.");
-        });
-      });
-    </script>
-  </head>
+	<script>
+		$(document).ready(function () {
+			$("#wrap").on("submit", function (e) {
+				alert("게시물이 등록되었습니다.");
+			});
+		});
+	</script>
+</head>
 
-  <body>
+<body>
     <!-- header import -->
-    <%@ include file="/WEB-INF/views/include/header.jsp" %>
+    <c:import url="/WEB-INF/views/header.jsp"></c:import>
     <!-- end of header import -->
 
-    <section class="section">
-      <div id="header">
-        <h2>게시물 작성</h2>
-      </div>
-
-      <form id="wrap" action="free">
-        <div id="title_div">
-          <h3>제목</h3>
-          <input type="text" id="title" name="title" required /><br />
-        </div>
-        <div id="contents_div">
-          <h3>내용</h3>
-          <textarea id="contents" name="contents" required></textarea><br />
-        </div>
-        <div id="button_div">
-          <input type="submit" id="input" value="등록" />
-        </div>
-      </form>
-    </section>
+	<section class="section">
+		<div id="header">
+			<h2>게시물 작성</h2>
+		</div>
+	
+	<form id="wrap" method="post" action="boardinsert">
+		<div id="title_div">
+			<h3>제목</h3>
+			<input type="text" name="boardName" id="boardName" placeholder="글 제목 입력" required /><br />
+		</div>
+		<div id="contents_div">
+			<h3>내용</h3>
+			<textarea name="boardContent" id="boardContent" placeholder="글 내용 입력" required></textarea><br />
+		</div>
+		<div>
+			<h3>작성자</h3>
+			<input type=text name="userName" id="userName" placeholder="이름 입력">
+		</div>
+			<div id="button_div">
+			<input type="submit" id="input" value="등록" />
+		</div>
+	</form>
+	</section>
 
     <!-- footer import -->
-    <%@ include file="/WEB-INF/views/include/footer.jsp" %>
-    <!-- end of footer import -->
+    <c:import url="/WEB-INF/views/footer.jsp"></c:import>
+    <!-- end of header import -->
   </body>
 </html>

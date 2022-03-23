@@ -30,13 +30,25 @@
         display: inline-block;
         margin-right: 20px;
       }
-      #title {
+      #boardNo {
         width: 960px;
         height: 30px;
         overflow: scroll;
         margin-bottom: 10px;
       }
-      #contents {
+      #userName {
+        width: 960px;
+        height: 30px;
+        overflow: scroll;
+        margin-bottom: 10px;
+      }
+      #boardName {
+        width: 960px;
+        height: 30px;
+        overflow: scroll;
+        margin-bottom: 10px;
+      }
+      #boardContent {
         width: 960px;
         height: 500px;
         vertical-align: top;
@@ -55,6 +67,12 @@
         background-color: gray;
       }
       input[type="submit"] {
+        background-color: rgb(230, 150, 80);
+        border-color: rgb(230, 150, 80);
+        width: 80px;
+        height: 40px;
+      }
+      input[type="reset"] {
         background-color: rgb(230, 150, 80);
         border-color: rgb(230, 150, 80);
         width: 80px;
@@ -83,24 +101,36 @@
       <div id="header">
         <h2>게시물 수정</h2>
       </div>
+      
+    <form action="boardupdate" method="post">
       <div id="wrap">
+      	<div id="no_div">
+          <h3>글번호</h3>
+          <input type="text" id="boardNo" name="boardNo" value="${dto.boardNo }" required readonly="readonly"/><br />
+        </div>
+        <div id="writer_div">
+          <h3>작성자</h3>
+          <input type="text" id="userName" name="userName" value="${dto.userName }" required readonly="readonly" /><br />
+        </div>
         <div id="title_div">
-          <h3>제목</h3>
-          <input type="text" id="title" name="title" required /><br />
+          <h3>제 목</h3>
+          <input type="text" id="boardName" name="boardName" value="${dto.boardName }" required /><br />
         </div>
-        <div id="contents_div">
-          <h3>내용</h3>
-          <textarea id="contents" name="contents" required></textarea><br />
+        <div class="contents_div">
+          <h3>내 용</h3>
+          <textarea id="boardContent" name="boardContent" required>${dto.boardContent }</textarea><br />
         </div>
-        <form id="button_div" action="free">
-          <input type="submit" id="alter" value="수정" class="inputbtn" />
-          <input type="submit" id="delete" value="삭제" class="inputbtn" />
-        </form>
+        <div id="button_div">
+          <input type="submit" id="alter" value="수정" />
+          <input type="reset" value="리셋" />
+      	</div>
       </div>
+    </form>
+    
     </section>
 
     <!-- footer import -->
-    <%@ include file="/WEB-INF/views/include/footer.jsp" %>
-    <!-- end of footer import -->
+    <c:import url="/WEB-INF/views/footer.jsp"></c:import>
+    <!-- end of header import -->
   </body>
 </html>

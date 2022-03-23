@@ -5,10 +5,7 @@
 <mapper namespace="com.commu.team3.dao.IBoardDAO">
 
 	<select id="boardList" resultType="boarddto">
-		select * from multicomdb.board limit
-		<foreach collection="array" item="num" separator=",">
-			${num}
-		</foreach>
+		select * from multicomdb.board
 	</select>
 	
 	<select id="boardDetail" resultType="boarddto" parameterType="int">
@@ -16,12 +13,12 @@
 	</select>
 	
 	<insert id="boardInsert">
-		insert into multicomdb.board (`boardName`, `boardContent`, `userName`)
-		values (#{boardName}, #{boardContent}, #{userName});
+		insert into multicomdb.board (`boardName`, `boardContent`, `userName`, `regdate`)
+		values (#{boardName}, #{boardContent}, #{userName}, now());
 	</insert>
 	
 	<update id="boardUpdate" parameterType="int">
-		update multicomdb.board set `boardName`=#{boardName}, `boardContent`= #{boardContent} WHERE  `boardNo`= ${boardNo};	
+		update multicomdb.board set `boardName`=#{boardName}, `boardContent`= #{boardContent}, `regdate`= now()  WHERE  `boardNo`= ${boardNo};	
 	</update>
 	
 	<delete id="boardDelete">
