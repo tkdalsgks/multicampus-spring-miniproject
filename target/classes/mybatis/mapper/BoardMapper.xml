@@ -5,7 +5,12 @@
 <mapper namespace="com.commu.team3.dao.IBoardDAO">
 
 	<select id="boardList" resultType="boarddto">
-		select * from multicomdb.board
+		select * from multicomdb.board where `boardType` IN (#{boardType}) limit #{page}, 10;
+		<!-- 
+			<foreach collection="array" item="num" separator=",">
+				${num}
+			</foreach>
+		 -->
 	</select>
 	
 	<select id="boardDetail" resultType="boarddto" parameterType="int">
@@ -24,4 +29,5 @@
 	<delete id="boardDelete">
 		DELETE FROM `multicomdb`.`board` WHERE  `boardNo`= ${boardNo};
 	</delete>
+	
 </mapper>

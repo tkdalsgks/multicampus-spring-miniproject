@@ -27,9 +27,6 @@
           </li>`;
 
           $("#menu ul").append(html);
-
-        });
-
       });
     </script>
 

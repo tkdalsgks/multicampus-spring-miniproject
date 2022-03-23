@@ -4,24 +4,31 @@ import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * @author Seongil, Yoon
+ * @author ena, Yoon
+ */
 public class BoardDTO {
-	int boardNo;
+	private int boardNo;
 	private String boardName;
 	private String boardContent;
 	private String userName;
 	private LocalDateTime regdate;
+	private String boardType;
 
 	public BoardDTO() {
 		super();
 	}
 
-	public BoardDTO(int boardNo, String boardName, String boardContent, String userName, LocalDateTime regdate) {
+	public BoardDTO(int boardNo, String boardName, String boardContent, String userName, LocalDateTime regdate,
+			String boardType) {
 		super();
 		this.boardNo = boardNo;
 		this.boardName = boardName;
 		this.boardContent = boardContent;
 		this.userName = userName;
 		this.regdate = regdate;
+		this.boardType = boardType;
 	}
 
 	public int getBoardNo() {
@@ -64,10 +71,18 @@ public class BoardDTO {
 		this.regdate = regdate;
 	}
 
+	public String getBoardType() {
+		return boardType;
+	}
+
+	public void setBoardType(String boardType) {
+		this.boardType = boardType;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardDTO [boardNo=" + boardNo + ", boardName=" + boardName + ", boardContent=" + boardContent
-				+ ", userName=" + userName + ", regdate=" + regdate + "]";
+				+ ", userName=" + userName + ", regdate=" + regdate + ", boardType=" + boardType + "]";
 	}
 
 }
