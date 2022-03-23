@@ -3,26 +3,49 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.commu.team3.dao.IMemberDAO">
+	
+	<!-- 로그인 -->
+	<select id="loginCheck" resultType="String">
+		select *
+		from member
+		where userId=#{userId} and userPwd=#{userPwd}
+	</select>
 
-
+	<!-- 회원가입 -->
 	<insert id="insertmember" parameterType="memberdto">
 		insert into member
 		values(#{userId},#{userPwd},#{userName},#{userEmail})
 	</insert>
-
-	<!-- <update id="updatemember" parameterType="memberdto">
-		update member_table
+	
+	<!-- 회원정보 상세조회 -->
+	<select id="memberView" resultType="memberdto" parameterType="String">
+		select *
+		from member
+		where userId=#{userId} and userName=#{userName}
+	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id="memberUpdate" parameterType="memberdto">
+		update member
 		set
-		userName=#{userName}, address=#{address}
-		where id=#{id};
+		userName=#{userName}, userEmail=#{userEmail}, userPwd=#{userPwd}
+		where userId=#{userId}
 	</update>
 
-	<delete id="deletemember" parameterType="String">
-		delete from member_table
-		where id=#{id};
+	<!-- 회원정보 삭제 -->
+	<delete id="memberDelete" parameterType="String">
+		delete from member
+		where userId=#{userId}
 	</delete>
+	
+	<!-- 비밀번호 체크 -->
+	<select id="checkPwd" resultType="int">
+		select count(*)
+		from member
+		where userId=#{userId} and userPwd=#{userPwd}
+	</select>
 
-	<select id="member" resultType="memberdto"
+	<!-- <select id="member" resultType="memberdto"
 		parameterType="String">
 		select * from member_table where id=#{id};
 	</select>
