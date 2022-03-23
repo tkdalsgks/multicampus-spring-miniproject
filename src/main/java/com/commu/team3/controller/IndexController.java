@@ -1,22 +1,16 @@
 package com.commu.team3.controller;
 
-import java.util.List;
+import javax.inject.Inject;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.commu.team3.service.MemberService;
 
 
 @Controller
 public class IndexController {
-	@Autowired
-	@Qualifier("commuservice")
+	@Inject
 	MemberService service;
 	
 	// index.jsp

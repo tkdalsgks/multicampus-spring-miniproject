@@ -18,46 +18,64 @@
 
     <!-- MATERIAL ICONS-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    
+    <script type="text/javascript">
+    	$(function() {
+    		$("#btnUpdate").click(function() {
+    			if(confirm("회원정보를 수정하시겠습니까?")) {
+	    			// 폼 내부의 데이터를 전송할 주소
+	    			document.form1.action="${path}/team3/update";
+	    			document.form1.submit();	// 제출    				
+    			}
+    		});
+    	});
+    	$(function() {
+    		$("#btnDelete").click(function() {
+    			if(confirm("아이디를 정말 삭제하시겠습니까?")) {
+    				// 폼 내부의 데이터를 전송할 주소
+	    			document.form1.action="${path}/team3/delete";
+	    			document.form1.submit();	// 제출
+    			}
+    		});
+    	});
+    </script>
   </head>
 
   <body>
     <!-- header import -->
-    <c:import url="/WEB-INF/views/header.jsp"></c:import>
+    <%@ include file="/WEB-INF/views/include/header.jsp" %>
     <!-- end of header import -->
 
     <section>
       <div class="mypage">
         <span class="material-icons">manage_accounts</span>
         <br />
-        <form action="">
-          <div class="label">아이디</div>
-          <input type="text" class="infobox" />
-          <br />
-          <div class="label">이메일</div>
-          <input type="text" class="infobox" />
-          <br />
-          <input type="button" value="회원정보 변경" class="infochange" id="infochange" />
-          <br /><br />
-          <div class="label">현재 비밀번호</div>
-          <input type="text" class="infobox" />
-          <br />
-          <div class="label">새로운 비밀번호</div>
-          <input type="text" class="infobox" /><br />
-          <div class="label">비밀번호 확인</div>
-          <input type="text" class="infobox" /><br />
-          <input type="button" value="비밀번호 변경" class="infochange" id="pwchange" />
-          <br /><br />
-          <a href="javascript:secession();">
-            <input type="button" value="회원탈퇴" class="infochange" id="secession" />
-          </a>
+        	<form name="form1" method="post">
+	          <div class="label">아이디</div>
+	          <input name="userId" value="${userId }" class="infobox" readonly />
+	          <br />
+	          <div class="label">이름</div>
+	          <input name="userName" value="${userName }" class="infobox" />
+	          <br />
+	          <div class="label">이메일</div>
+	          <input name="userEmail" value="${userEmail }" class="infobox" />
+	          <br />
+	          <div class="label">비밀번호</div>
+	          <input type="password" name="userPwd" class="infobox" />
+	          <br /><br />
+	          <input type="button" value="회원정보 변경" class="infochange" id="btnUpdate" />
+	          <br /><br />
+	          <!-- <a href="javascript:secession();"> -->
+	            <input type="button" value="회원탈퇴" class="infochange" id="btnDelete" />
+	         <!--  </a> -->
+	        </form>
           <!-- KAKAO SECESSION JAVASCRIPT -->
           <script src="resources/js/kakaosecession.js"></script>
-        </form>
       </div>
     </section>
 
     <!-- footer import -->
-    <c:import url="/WEB-INF/views/footer.jsp"></c:import>
-    <!-- end of header import -->
+    <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+    <!-- end of footer import -->
   </body>
 </html>

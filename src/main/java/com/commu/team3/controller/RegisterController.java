@@ -1,24 +1,18 @@
 package com.commu.team3.controller;
 
-import javax.servlet.http.HttpSession;
+import javax.inject.Inject;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.commu.team3.dto.MemberDTO;
 import com.commu.team3.service.MemberService;
 
 @Controller
 public class RegisterController {
-	@Autowired
-	@Qualifier("commuservice")
+	@Inject
 	MemberService service;
 	
 	// selectregister.jsp
