@@ -13,6 +13,5 @@
   	<mappers>
   		<mapper resource="mybatis/mapper/sql_mapping.xml"/>
   		<mapper resource="mybatis/mapper/BoardMapper.xml"/>
-  		<mapper resource="mybatis/mapper/Member.xml"/>
   	</mappers>
   </configuration>
