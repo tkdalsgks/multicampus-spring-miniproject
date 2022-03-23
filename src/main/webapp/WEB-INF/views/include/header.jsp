@@ -93,11 +93,18 @@
       </a>
     </h1>
     <div id="headerlogin">
+      <c:if test="${userId == null }">
       <ul>
-        <li><a href="<c:url value='/login' />">로그인</a></li>
-        <li><a href="<c:url value='/mypage' />">마이페이지</a></li>
-        <li><a href="<c:url value='/agreement' />">회원가입</a></li>
+      	<li><a href="<c:url value='/login' />">로그인</a></li>
+      	 <li><a href="<c:url value='/agreement' />">회원가입</a></li>
       </ul>
+      </c:if>
+      <c:if test="${userId != null }">
+      <ul>
+      	<li><a href="<c:url value='/logout' />">로그아웃</a></li>
+        <li><a href="<c:url value='/mypage' />">마이페이지</a></li>
+      </ul>
+      </c:if>
     </div>
   </div>
   <nav>

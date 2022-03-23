@@ -85,7 +85,7 @@
 
   <body>
     <!-- header import -->
-    <c:import url="/WEB-INF/views/header.jsp"></c:import>
+    <%@ include file="/WEB-INF/views/include/header.jsp" %>
     <!-- end of header import -->
 
     <script type="text/javascript">
@@ -191,7 +191,7 @@
     </section>
 
     <!-- footer import -->
-    <c:import url="/WEB-INF/views/footer.jsp"></c:import>
-    <!-- end of header import -->
+    <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+    <!-- end of footer import -->
   </body>
 </html>

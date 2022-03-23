@@ -20,6 +20,7 @@
 		<c:if test="${not empty back}">
 			history.back();	
 		</c:if>
+		
 		<%-- 페이지 이동 --%>
 		<c:if test="${not empty url}">
 			location.href = '${url}'

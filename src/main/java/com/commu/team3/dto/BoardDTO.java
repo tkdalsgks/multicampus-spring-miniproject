@@ -4,6 +4,12 @@ import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Component;
 
+
+/**
+ * @author Seongil, Yoon
+ *
+ */
+@Component
 public class BoardDTO {
 	private String boardNo;
 	private String boardName;
