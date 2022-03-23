@@ -29,7 +29,7 @@
 
     <section class="section">
       <div class="section_img">
-        <img src="resources/images/carousel1.jpeg" alt="메인이미지" />
+        <img src="resources/images/carousel1.jpeg" alt="메인이미지" class="section_img" />
       </div>
       <br />
       <div class="article_left">

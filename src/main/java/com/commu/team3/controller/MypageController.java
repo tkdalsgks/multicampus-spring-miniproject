@@ -3,7 +3,6 @@ package com.commu.team3.controller;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +20,9 @@ public class MypageController {
 	
 	// mypage.jsp
 	@GetMapping("mypage")
-	public String memberView(String userId, String userName, Model model) {
+	public String memberView(String userId, Model model) {
 		// 회원 정보를 model에 저장
 		model.addAttribute("dto", service.memberView(userId));
-		model.addAttribute("dto", service.memberView(userName));
 		return "mypage";
 	}
 	
