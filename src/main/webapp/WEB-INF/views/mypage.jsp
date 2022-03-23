@@ -22,11 +22,11 @@
     <script type="text/javascript">
     	$(function() {
     		$("#btnUpdate").click(function() {
-    			if(confirm("회원정보를 수정하시겠습니까?")) {
-	    			// 폼 내부의 데이터를 전송할 주소
-	    			document.form1.action="${path}/team3/update";
-	    			document.form1.submit();	// 제출
-    			}
+	    		if(confirm("회원정보를 수정하시겠습니까?")) {
+		    		// 폼 내부의 데이터를 전송할 주소
+		    		document.form1.action="${path}/team3/update";
+		    		document.form1.submit();	// 제출
+	    		}
     		});
     	});
     	$(document).ready(function() {
@@ -59,8 +59,13 @@
         <span class="material-icons">manage_accounts</span>
         <br />
         	<form name="form1" method="post">
+        	  <h2>회원정보</h2>
+        	  <br />
 	          <div class="label">아이디</div>
 	          <input name="userId" value="${userId }" class="infobox" readonly />
+	          <br />
+	          <br />
+	          <h2>정보변경</h2>
 	          <br />
 	          <div class="label">이름</div>
 	          <input name="userName" value="${userName }" class="infobox" />

@@ -24,7 +24,6 @@ import com.commu.team3.service.IBoardService;
 /**
  * @author Seongil, Yoon
  * @author Ena, Yoon
- * @author Seung-hyun, Kim
  */
 @Controller
 public class BoardController {

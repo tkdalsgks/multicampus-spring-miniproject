@@ -126,8 +126,9 @@
     </form>
     </section>
 
-    <!-- footer import -->
-    <c:import url="/WEB-INF/views/footer.jsp"></c:import>
-    <!-- end of header import -->
+   <!-- footer import -->
+  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+  <!-- end of footer import -->
+
   </body>
 </html>

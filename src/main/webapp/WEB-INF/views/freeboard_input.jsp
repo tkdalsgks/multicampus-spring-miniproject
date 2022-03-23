@@ -90,18 +90,19 @@
 			<h3>내용</h3>
 			<textarea name="boardContent" id="boardContent" placeholder="글 내용 입력" required></textarea><br />
 		</div>
-		<div>
+		<!-- <div>
 			<h3>작성자</h3>
 			<input type=text name="userName" id="userName" placeholder="이름 입력">
-		</div>
+		</div> -->
 			<div id="button_div">
 			<input type="submit" id="input" value="등록" />
 		</div>
 	</form>
 	</section>
 
-    <!-- footer import -->
-    <c:import url="/WEB-INF/views/footer.jsp"></c:import>
-    <!-- end of header import -->
+   <!-- footer import -->
+  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+  <!-- end of footer import -->
+
   </body>
 </html>

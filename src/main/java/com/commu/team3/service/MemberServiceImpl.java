@@ -73,4 +73,10 @@ public class MemberServiceImpl implements MemberService {
 		int result = dao.checkId(dto);
 		return result;
 	}
+	
+	// 이메일 중복체크
+	public int checkEmail(MemberDTO dto) {
+		int result = dao.checkEmail(dto);
+		return result;
+	}
 }
