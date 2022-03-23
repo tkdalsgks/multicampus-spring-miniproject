@@ -51,4 +51,11 @@ public class IMemberDAO {
 		if(count == 1) result = true;
 		return result;
 	}
+	
+	// 아이디 중복체크
+	public int checkId(MemberDTO dto) {
+		int result = session.selectOne("checkId", dto);
+		return result;
+	}
+	
 }

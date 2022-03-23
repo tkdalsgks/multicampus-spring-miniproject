@@ -25,16 +25,24 @@
     			if(confirm("회원정보를 수정하시겠습니까?")) {
 	    			// 폼 내부의 데이터를 전송할 주소
 	    			document.form1.action="${path}/team3/update";
-	    			document.form1.submit();	// 제출    				
+	    			document.form1.submit();	// 제출
     			}
     		});
     	});
-    	$(function() {
+    	$(document).ready(function() {
     		$("#btnDelete").click(function() {
     			if(confirm("아이디를 정말 삭제하시겠습니까?")) {
-    				// 폼 내부의 데이터를 전송할 주소
-	    			document.form1.action="${path}/team3/delete";
-	    			document.form1.submit();	// 제출
+    				if($("#userPwd").val() != $("#userPwd").val()) {
+    					swal("암호가 틀렸습니다.", "정확한 암호를 다시 입력해주세요.", "error");
+    				}
+    				if($("#userPwd").val() == "") {
+    					swal("암호가 틀렸습니다.", "정확한 암호를 다시 입력해주세요.", "error");
+    				}
+    				if($("#userPwd").val() == $("#userPwd").val()) {
+    					// 폼 내부의 데이터를 전송할 주소
+		    			document.form1.action="${path}/team3/delete";
+		    			document.form1.submit();	// 제출   
+    				}
     			}
     		});
     	});

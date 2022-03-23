@@ -26,6 +26,9 @@ public interface MemberService {
 	// 비밀번호 체크
 	public boolean checkPwd(String userId, String userPwd);
 	
+	// 아이디 중복체크
+	public int checkId(MemberDTO dto);
+	
 	MemberDTO authenticateUser(String userId, String userPwd);
 
 }

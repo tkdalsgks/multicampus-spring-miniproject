@@ -67,4 +67,10 @@ public class MemberServiceImpl implements MemberService {
 	public boolean checkPwd(String userId, String userPwd) {
 		return dao.checkPwd(userId, userPwd);
 	}
+	
+	// 아이디 중복체크
+	public int checkId(MemberDTO dto) {
+		int result = dao.checkId(dto);
+		return result;
+	}
 }

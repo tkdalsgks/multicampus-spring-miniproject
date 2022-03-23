@@ -76,8 +76,11 @@
           		})
           	</script>
           </c:if>
-          <button type="submit" class="login" id="btnRegister" onclick="location.href='/agreement'">회원가입</button>
         </form>
+        <div style="text-align: center;">
+          <button type="submit" class="login" id="btnRegister" onclick="location.href='/team3/find'">비밀번호 찾기</button>
+          <button type="submit" class="login" id="btnRegister" onclick="location.href='/team3/agreement'">회원가입</button>
+        </div>
       </div>
     </section>
 

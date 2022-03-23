@@ -8,6 +8,11 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="resources/css/styles.css" />
+    
+    <!-- JAVASCRIPT -->
+    <script src="resources/js/userlist.js"></script>
+    <script src="resources/js/sweetalert.min.js"></script>
+    <script src="resources/js/jquery-3.6.0.min.js"></script>
 
     <style>
       .section {
@@ -76,11 +81,6 @@
           width: 80px;
           height: 30px;
     </style>
-
-    <!-- JAVASCRIPT -->
-    <script src="resources/js/userlist.js"></script>
-    <script src="resources/js/sweetalert.min.js"></script>
-    <script src="resources/js/jquery-3.6.0.min.js"></script>
   </head>
 
   <body>
@@ -119,6 +119,8 @@
           userlist.push($("#userId").val());
           location.href = "login";
         });
+        
+        
       });
 
       function idCheck() {
@@ -130,17 +132,22 @@
           swal("영문과 숫자 4~12자 이내로 입력하세요.", "", "warning");
           return;
         }
-
-        for (var i = 0; i <= userlist.length; i++) {
-          if (userlist[i] == $("#userId").val()) {
-            idCk = true;
-          }
-        }
-        if (idCk) {
-          swal("등록이 불가능한 아이디입니다.", "", "error");
-        } else {
-          swal("등록 가능한 아이디입니다.", "", "success");
-        }
+        
+        $("#checkId").on("click", function() {
+			$.ajax({
+				url: '<%=request.getContextPath() %>/checkId',
+				data: {"userId" : $("#userId").val()},
+				type: 'post',
+				dataType: 'json',
+				success: function(data) {
+					if(data == 1) {
+						$("#result1").html("중복된 아이디 입니다.");
+					} else if(data == 0) {
+						$("#result1").html("사용 가능한 아이디 입니다.");
+					}
+				}
+			});
+		});
       }
     </script>
 
@@ -154,7 +161,9 @@
             <td class="col1">아이디</td>
             <td class="col2">
               <input type="text" name="userId" id="userId" maxlength="14" class="col2input" />
-              <input class="but1" type="button" value="중복확인" id="btn-idcheck" onclick="idCheck()" />
+              <button class="but1" type="button" id="checkId" onclick="idCheck()">중복확인</button>
+              <br />
+              <span id="result1"></span>
             </td>
           </tr>
           <tr>
@@ -179,7 +188,13 @@
             <td class="col1">이메일</td>
             <td class="col2">
               <input type="text" name="userEmail" id="userEmail" maxlength="14" class="col2input" />
-              <input class="but5" type="button" value="이메일인증" id="btn-emailcheck" onclick="emailCheck()" />
+            </td>
+          </tr>
+          <tr>
+          	<td class="col1">인증번호</td>         
+          	<td class="col2">
+          	<input type="text" name="emailCheck" id="emailCheck" maxlength="14" class="col2input" />
+            <input class="but1" type="button" value="인증번호 확인" id="btn-emailcheck" onclick="emailCheck()" />
             </td>
           </tr>
         </table>

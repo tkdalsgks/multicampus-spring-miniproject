@@ -17,10 +17,23 @@
 	</properties>
 
 	<dependencies>
-		<!-- spring dependency 1. spring context (spring core 포함) 2. spring context 
-			support 3. spring webmvc 4. spring jdbc 5. spring test 6. mysql driver 7. 
-			commons-dbcp 8. mybatis 9. mybatis-spring 10. junit 11. aspectJ weaver 12. 
-			aspectJ rt 13. logback 14. jcl-slf4j -->
+		<!-- spring dependency 
+			1. spring context (spring core 포함) 
+			2. spring context support 
+			3. spring webmvc 
+			4. spring jdbc 
+			5. spring test 
+			6. mysql driver 
+			7. commons-dbcp 
+			8. mybatis 
+			9. mybatis-spring 
+			10. junit 
+			11. aspectJ weaver 
+			12. aspectJ rt 
+			13. logback 
+			14. jcl-slf4j
+			15. inject
+			16. json -->
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -115,6 +128,7 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -134,13 +148,14 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.13.1</version>
 		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jsr310</artifactId>
 			<version>2.13.2</version>
 		</dependency>
-
+	
 	</dependencies>
 
 	<build>
