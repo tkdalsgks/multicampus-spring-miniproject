@@ -1,6 +1,9 @@
 package com.commu.team3.controller;
 
+
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,6 +21,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.commu.team3.dto.BoardDTO;
 import com.commu.team3.service.IBoardService;
 
+/**
+ * @author Seongil, Yoon
+ * @author Ena, Yoon
+ * @author Seung-hyun, Kim
+ */
 @Controller
 public class BoardController {
 
@@ -26,10 +34,10 @@ public class BoardController {
 	IBoardService service;
 
 	// 게시물 리스트 Model and View
-	@GetMapping("/boardlist/{boardType}")
-	public String freeboard(@PathVariable String boardType, @RequestParam("page") int page, Model model) {
-		List<BoardDTO> list = service.boardList(boardType, page);
-		int pagenum = service.boardCount(boardType);
+	@GetMapping("/free")
+	public String freeboard(@RequestParam(value = "page", defaultValue = "1") int page, Model model) {
+		List<BoardDTO> list = service.boardList("free", page);
+		int pagenum = service.boardCount("free");
 		model.addAttribute("boardList", list);
 		model.addAttribute("pagenum", pagenum);
 

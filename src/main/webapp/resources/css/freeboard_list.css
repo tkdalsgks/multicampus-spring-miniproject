@@ -3,6 +3,11 @@ section.boardSection {
     margin: 0 auto;
 }
 
+section.boardSection #boardPageNum{
+    width: max-content;
+    margin: 0 auto;
+}
+
 ul.boardList li.boardHead {
     display: flex;
     list-style: none;
@@ -15,7 +20,6 @@ ul.boardList li.boardHead {
     text-align: center;
 }
 
-/* border-bottom: 1px solid #ccc */
 
 ul.boardList li:first-child {
     height: 30px;

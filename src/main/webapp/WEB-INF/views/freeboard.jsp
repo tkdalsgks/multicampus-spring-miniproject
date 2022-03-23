@@ -9,10 +9,10 @@
   <title>자유 게시판 | 멀캠 커뮤니티</title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/resources/css/styles.css" />
+  <link rel="stylesheet" href="resources/css/styles.css" />
 
   <!-- JAVASCRIPT -->
-  <script src="/resources/js/jquery-3.6.0.min.js"></script>
+  <script src="resources/js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -44,7 +44,7 @@
         <span></span>
         <span>작성일</span>
         <span></span>
-        <span style="margin-right: 30px">조회수</span>
+        <span style="margin-right: 30px"></span>
         <span style="width: max-content"></span>
         <span></span>
       </li>
@@ -52,18 +52,18 @@
         <li class="boardLine" value=${board.boardNo}>
           <div>
             <a class="contents" id="boardInfo" name="boardInfo" href="free_view.html">
-              <span>${board.boardNo}</span>
+              <span >${board.boardNo}</span>
               <span>${board.boardName}</span>
               <span>${board.boardContent}</span>
               <span>${board.userName}</span>
-              <span id="timeForToday"></span>
+              <span id="timeForToday">${board.regdate}</span>
             </a>
           </div>
           <div>
-            <a class="btnClass" id="alterBtn" name="alterBtn" href="freeboard_alter.html">
+            <a class="btnClass" id="alterBtn" name="alterBtn" href="boardupdate?boardNo=${board.boardNo}">
               글 수정
             </a>
-            <a class="btnClass" id="delBtn" name="delBtn">
+            <a class="btnClass" id="delBtn" name="delBtn" >
               글 삭제
             </a>
           </div>
@@ -80,12 +80,10 @@
   <%@ include file="/WEB-INF/views/include/footer.jsp" %>
   <!-- end of footer import -->
 
-  <script type="text/javascript" src="/resources/js/freeboard_list.js"></script>
+  <script type="text/javascript" src="resources/js/freeboard_list.js"></script>
 
-  <script type="text/javascript">
-    pagelistReady($ {
-      pagenum
-    })
+  <script>
+    pagelistReady( ${pagenum} )
   </script>
 </body>
 

@@ -2,15 +2,23 @@ package com.commu.team3.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import com.commu.team3.common.exception.UnauthorizedException;
 import com.commu.team3.dao.IBoardDAO;
 import com.commu.team3.dto.BoardDTO;
 
+/**
+ * @author Seongil, Yoon
+ * @author Ena, Yoon
+ * @author Seung-hyun, Kim
+ */
 @Service("iboardservice")
 public class IBoardServiceImpl implements IBoardService {
 	private final static int BOARD_PER_PAGE = 10;
@@ -19,12 +27,20 @@ public class IBoardServiceImpl implements IBoardService {
 	@Qualifier("iboarddao")
 	IBoardDAO dao;
 
+	@Autowired
+	HttpSession websession;
+
 	@Override
 	public List<BoardDTO> boardList(String boardType, int page) {
 //		int[] limit = new int[] { (page - 1) * 10, 10 };
 		page = (page - 1) * 10;
 		System.out.println(page);
 		return dao.boardList(boardType, page);
+	}
+
+	@Override
+	public String BoardUserId(int boardNo) {
+		return dao.BoardUserId(boardNo);
 	}
 
 	@Override
@@ -56,7 +72,17 @@ public class IBoardServiceImpl implements IBoardService {
 
 	@Override
 	public void boardDelete(int boardNo) {
-		dao.boardDelete(boardNo);
+		// 게시글의 userId 조회
+		String boardUserId = dao.BoardUserId(boardNo);
+
+		if (websession.getAttribute("userId") == null
+				|| websession.getAttribute("userId").equals(boardUserId) == false) {
+			// 게시글의 작성자와 session객체의 작성자를 비교하기 위함. 다르면 권한없음
+			throw new UnauthorizedException(String.format("unauthorized you"));
+		} else {
+			// 권한 있으므로 삭제
+			dao.boardDelete(boardNo);
+		}
 	}
 
 }

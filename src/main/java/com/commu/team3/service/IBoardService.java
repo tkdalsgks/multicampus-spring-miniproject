@@ -8,6 +8,8 @@ public interface IBoardService {
 
 	public List<BoardDTO> boardList(String boardType, int page);
 
+	public String BoardUserId(int boardNo);
+
 	public void boardInsert(BoardDTO dto);
 
 	public BoardDTO boardDetail(int boardNo);

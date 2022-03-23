@@ -88,7 +88,7 @@
   <div id="header">
     <h1 id="logo_font">
       <a class="logo_font" href="<c:url value='/' />">
-        <img src="<c:url value='/resources/images/multicampus_logo.png' />" alt="멀티캠퍼스 커뮤니티" id="logoimg" />
+        <img src="<c:url value='resources/images/multicampus_logo.png' />" alt="멀티캠퍼스 커뮤니티" id="logoimg" />
         .COMMUNITY
       </a>
     </h1>
@@ -112,7 +112,7 @@
       <!-- 헤더 메뉴 -->
       <div id="menu">
         <ul>
-          <li id="freeboard"><a href="<c:url value='/boardlist/free?page=1' />">자유게시판</a></li>
+          <li id="freeboard"><a href="<c:url value='/free?page=1' />">자유게시판</a></li>
           <li id="qboard"><a href="<c:url value='/question' />">질문게시판</a></li>
           <li id="aboard"><a href="<c:url value='/anonymity' />">익명게시판</a></li>
           <li id=""><a href="<c:url value='/chat' />">채팅방</a></li>

@@ -10,7 +10,8 @@ import com.commu.team3.dto.BoardDTO;
 
 /**
  * @author Seongil, Yoon
- * @author ena, Yoon
+ * @author Ena, Yoon
+ * @author Seung-hyun, Kim
  */
 
 //  root-context.xml에 Mapper스캔 등록, 없으면 빈생성 오류
@@ -22,6 +23,9 @@ public interface IBoardDAO {
 	// 리스트
 //	public List<BoardDTO> boardList(@Param("boardType") String boardType, int[] limit);
 	public List<BoardDTO> boardList(@Param("boardType") String boardType, @Param("page") int page);
+	
+	// 게시물의 userId 조회
+	public String BoardUserId(@Param("boardNo") int boardNo);
 
 	// 작성
 	public void boardInsert(BoardDTO dto);
@@ -34,8 +38,8 @@ public interface IBoardDAO {
 
 	// 삭제
 	public void boardDelete(int boardNo);
-	
-	//글 총갯수
+
+	// 글 총갯수
 	public int boardCount(@Param("boardType") String boardType);
 
 }

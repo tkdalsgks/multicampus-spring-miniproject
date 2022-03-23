@@ -4,8 +4,18 @@
 
 <mapper namespace="com.commu.team3.dao.IBoardDAO">
 
+	<select id="BoardUserId" resultType="String">
+		SELECT userId 
+		FROM `multicomdb`.`member` AS a 
+		JOIN `multicomdb`.`board` AS b 
+		ON a.userName = b.userName 
+		WHERE b.boardNo = #{boardNo};
+	</select>
+
 	<select id="boardList" resultType="boarddto">
-		select * from multicomdb.board where `boardType` IN (#{boardType}) limit #{page}, 10;
+		select * from multicomdb.board where `boardType` = #{boardType}
+		ORDER BY `regdate` DESC 
+		limit #{page}, 10;
 		<!-- 
 			<foreach collection="array" item="num" separator=",">
 				${num}

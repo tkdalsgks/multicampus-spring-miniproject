@@ -37,7 +37,7 @@
         <ul>
           <li>
             <a href="<c:url value='/' />">
-              <img src="<c:url value='/resources/images/multicampus_logo.png' />" class="logoimg" />
+              <img src="<c:url value='resources/images/multicampus_logo.png' />" class="logoimg" />
             </a>
           </li>
           <li>
