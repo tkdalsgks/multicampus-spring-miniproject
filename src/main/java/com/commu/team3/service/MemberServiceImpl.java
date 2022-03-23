@@ -5,14 +5,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
-import com.commu.team3.dao.MemberDAO;
+import com.commu.team3.dao.IMemberDAO;
 import com.commu.team3.dto.MemberDTO;
 import com.commu.team3.repository.MemberRepository;
 
 @Service("commuservice")
 public class MemberServiceImpl implements MemberService {
 	@Inject
-	MemberDAO dao;
+	IMemberDAO dao;
 	
 	public MemberRepository memberRepository;
 	
@@ -66,5 +66,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public boolean checkPwd(String userId, String userPwd) {
 		return dao.checkPwd(userId, userPwd);
+	}
+	
+	// 아이디 중복체크
+	public int checkId(MemberDTO dto) {
+		int result = dao.checkId(dto);
+		return result;
 	}
 }

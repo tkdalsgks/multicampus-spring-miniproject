@@ -47,7 +47,7 @@
           </li>
         </ul>
       </div>
-      <form action="<c:url value='/select' />" method="get" id="form1">
+      <form action="<c:url value='/select' />" method="post" id="form1">
         <div id="d1">
           <h1 align="center">회원가입을 환영합니다.</h1>
           <br /><br />
@@ -134,13 +134,7 @@
             </td>
           </div>
 
-          <tr>
-            <td align="left">
-              <font size="2">이벤트 등 프로모션 알림 메일 수신(선택)</font>
-            </td>
-            <td><input type="checkbox" name="c4" id="c4" /></td>
-            <hr />
-          </tr>
+          
 
           <div align="center">
             <br />

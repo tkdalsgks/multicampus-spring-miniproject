@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.commu.team3.dto.MemberDTO;
 
 @Repository("commudao")
-public class MemberDAO {
+public class IMemberDAO {
 	@Inject
 	SqlSession session;
 	
@@ -51,4 +51,11 @@ public class MemberDAO {
 		if(count == 1) result = true;
 		return result;
 	}
+	
+	// 아이디 중복체크
+	public int checkId(MemberDTO dto) {
+		int result = session.selectOne("checkId", dto);
+		return result;
+	}
+	
 }

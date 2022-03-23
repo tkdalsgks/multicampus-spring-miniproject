@@ -21,7 +21,7 @@
 	<select id="memberView" resultType="memberdto" parameterType="String">
 		select *
 		from member
-		where userId=#{userId} and userName=#{userName}
+		where userId=#{userId}
 	</select>
 	
 	<!-- 회원정보 수정 -->
@@ -43,6 +43,13 @@
 		select count(*)
 		from member
 		where userId=#{userId} and userPwd=#{userPwd}
+	</select>
+	
+	<!-- 아이디 중복체크 -->
+	<select id="checkId" resultType="int">
+		select count(*)
+		from member
+		where userId=#{userId}
 	</select>
 
 	<!-- <select id="member" resultType="memberdto"
