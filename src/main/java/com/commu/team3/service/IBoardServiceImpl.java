@@ -2,6 +2,7 @@ package com.commu.team3.service;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.commu.team3.common.exception.UnauthorizedException;
 import com.commu.team3.dao.IBoardDAO;
+import com.commu.team3.dao.IMemberDAO;
 import com.commu.team3.dto.BoardDTO;
+import com.commu.team3.dto.MemberDTO;
 
 /**
  * @author Seongil, Yoon
@@ -23,6 +26,9 @@ public class IBoardServiceImpl implements IBoardService {
 	@Autowired
 	@Qualifier("iboarddao")
 	IBoardDAO dao;
+
+	@Inject
+	IMemberDAO memberDao;
 
 	@Autowired
 	HttpSession websession;
@@ -54,12 +60,16 @@ public class IBoardServiceImpl implements IBoardService {
 
 	@Override
 	public void boardInsert(BoardDTO dto) {
+		String userId = (String) websession.getAttribute("userId");
+		// 등록하기전에 사용자가 있는지 먼저확인
+		MemberDTO memberDto = memberDao.memberView(userId);
 
-		if (websession.getAttribute("userId") == null) {
-			// 로그인하지 않앗으면 권한없음
+		if (userId == null || memberDto == null) {
+			// 로그인하지 않앗으면 권한없음,
 			throw new UnauthorizedException(String.format("unauthorized you"));
 		} else {
 			// 권한 있으므로 등록
+			dto.setUserName(memberDto.getUserName());
 			dao.boardInsert(dto);
 		}
 

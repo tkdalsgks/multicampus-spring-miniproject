@@ -128,6 +128,9 @@
               <li id="qboard"><a href="<c:url value='/question' />">질문게시판</a></li>
               <li id="qboard"><a href="<c:url value='/anonymity' />">익명게시판</a></li>
               <li id=""><a href="<c:url value='/chat' />">채팅방</a></li>
+              <li id="boardWrite">
+                <a href="freeinput">글 작성</a>
+            </li>
             </ul>
           </div>
         </div>

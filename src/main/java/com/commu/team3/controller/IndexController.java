@@ -27,10 +27,10 @@ public class IndexController {
 //	}
 	
 	// free_view.jsp
-	@GetMapping("/freeview")
-	public String free_view() {
-		return "free_view";
-	}
+//	@GetMapping("/freeview")
+//	public String free_view() {
+//		return "free_view";
+//	}
 	
 	// freeboard_input.jsp
 	@GetMapping("/freeinput")
