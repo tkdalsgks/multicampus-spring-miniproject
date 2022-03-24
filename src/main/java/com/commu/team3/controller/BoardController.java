@@ -1,6 +1,5 @@
 package com.commu.team3.controller;
 
-
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -43,19 +42,27 @@ public class BoardController {
 		return "freeboard";
 	}
 
-	// 리스트조회
-//	@ResponseBody
-//	@GetMapping("/boardlist/{boardType}")
-//	public List<BoardDTO> boardList(@PathVariable String boardType, @RequestParam("page") int page) {
-//		List<BoardDTO> list = service.boardList(boardType, page);
-//		return list;
-//	}
+	// 게시물 리스트 Model and View
+	@GetMapping("/qeus")
+	public String qeusboard(@RequestParam(value = "page", defaultValue = "1") int page, Model model) {
+		List<BoardDTO> list = service.boardList("qeus", page);
+		int pagenum = service.boardCount("qeus");
+		model.addAttribute("boardList", list);
+		model.addAttribute("pagenum", pagenum);
 
-//	@ResponseBody
-//	@GetMapping("/boardCount/{boardType}")
-//	public int boardCount(@PathVariable String boardType) {
-//		return service.boardCount(boardType);
-//	}
+		return "qustionboard";
+	}
+
+	// 게시물 리스트 Model and View
+	@GetMapping("/anony")
+	public String anonyboard(@RequestParam(value = "page", defaultValue = "1") int page, Model model) {
+		List<BoardDTO> list = service.boardList("anony", page);
+		int pagenum = service.boardCount("anony");
+		model.addAttribute("boardList", list);
+		model.addAttribute("pagenum", pagenum);
+
+		return "anonymityboard";
+	}
 
 	// 작성페이지 매핑
 	@RequestMapping(value = "/boardinsert", method = RequestMethod.GET)

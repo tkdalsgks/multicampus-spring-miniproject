@@ -33,23 +33,23 @@ public class IndexController {
 //	}
 	
 	// freeboard_input.jsp
-	@GetMapping("/freeinput")
-	public String freeboard_input() {
-		return "freeboard_input";
-	}
+//	@GetMapping("/freeinput")
+//	public String freeboard_input() {
+//		return "freeboard_input";
+//	}
 	
 	// freeboard_alter.jsp
-	@GetMapping("/freealter")
-	public String freeboard_alter() {
-		return "freeboard_alter";
-	}
+//	@GetMapping("/freealter")
+//	public String freeboard_alter() {
+//		return "freeboard_alter";
+//	}
 	// -------------------------
 	
 	// 질문게시판 --------------
-	@GetMapping("/question")
-	public String questionboard() {
-		return "qustionboard";
-	}
+//	@GetMapping("/question")
+//	public String questionboard() {
+//		return "qustionboard";
+//	}
 	
 	// qustion_view.jsp
 	@GetMapping("/questionview")
@@ -72,11 +72,11 @@ public class IndexController {
 	
 	// 기타 --------------------
 	// anonymityboard.jsp
-	@GetMapping("/anonymity")
-	public String anonymityboard() {
-		return "anonymityboard";
-	}
-	
+//	@GetMapping("/anonymity")
+//	public String anonymityboard() {
+//		return "anonymityboard";
+//	}
+//	
 	// chatroom.jsp
 	@GetMapping("/chat")
 	public String chatroom() {
@@ -88,5 +88,11 @@ public class IndexController {
 	@GetMapping("/404")
 	public String error404() {
 		return "error/404";
+	}
+
+	// error 401
+	@GetMapping("/401")
+	public String error401() {
+		return "error/401";
 	}
 }

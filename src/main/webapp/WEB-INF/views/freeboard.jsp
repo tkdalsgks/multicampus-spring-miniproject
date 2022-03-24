@@ -19,7 +19,6 @@
   <!-- header import -->
   <%@ include file="/WEB-INF/views/include/header.jsp" %>
   <!-- end of header import -->
-
   <section class="boardSection">
     <ul class="boardList">
       <li class="boardHead">
@@ -57,7 +56,6 @@
           </div>
         </li>
       </c:forEach>
-      <!-- JS 영역 -->
     </ul>
     <div id="boardPageNum">
       <!-- JS 영역 -->

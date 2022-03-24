@@ -113,9 +113,14 @@
       <div id="menu">
         <ul>
           <li id="freeboard"><a href="<c:url value='/free?page=1' />">자유게시판</a></li>
-          <li id="qboard"><a href="<c:url value='/question' />">질문게시판</a></li>
-          <li id="aboard"><a href="<c:url value='/anonymity' />">익명게시판</a></li>
+          <li id="qboard"><a href="<c:url value='/qeus?page=1' />">질문게시판</a></li>
+          <li id="aboard"><a href="<c:url value='/anony?page=1' />">익명게시판</a></li>
           <li id=""><a href="<c:url value='/chat' />">채팅방</a></li>
+       		<c:if test="${sessionScope.userId != null}">
+	           <li id="boardWrite">
+	              <a href="boardinsert">글 작성</a>
+	          </li>
+          </c:if>
         </ul>
       </div>
     </div>

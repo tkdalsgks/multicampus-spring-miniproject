@@ -49,15 +49,9 @@
       <button id="btn1" style="display: inline-block; background-color: rgb(230, 150, 80); border-color: rgb(230, 150, 80); width: 80px; height: 40px" onclick="location.href='boardupdate?boardNo=${dto.boardNo}'">
         글 수정
       </button>
-      <button id="btn2" style="display: inline-block; background-color: rgb(230, 150, 80); border-color: rgb(230, 150, 80); width: 80px; height: 40px" onclick="location.href='location.href='boarddelete?boardNo=${dto.boardNo}'">글 삭제</button>
+      <button id="btn2" style="display: inline-block; background-color: rgb(230, 150, 80); border-color: rgb(230, 150, 80); width: 80px; height: 40px">글 삭제</button>
     </div>
-    <script>
-      document.getElementById("btn2").addEventListener("click", 삭제);
-
-      function 삭제() {
-        alert("삭제되었습니다.");
-      }
-    </script>
+    
     <div>
       <br />
       <br />
@@ -66,5 +60,10 @@
     <!-- footer import -->
     <%@ include file="/WEB-INF/views/include/footer.jsp" %>
     <!-- end of footer import -->
+
+    <script type="text/javascript" src="resources/js/boardDelete.js"></script>
+    <script>
+      getBoardNo( ${dto.boardNo} )
+    </script>
   </body>
 </html>
