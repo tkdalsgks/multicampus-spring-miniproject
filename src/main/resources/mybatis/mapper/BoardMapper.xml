@@ -32,8 +32,8 @@
 	</select>
 	
 	<insert id="boardInsert">
-		insert into multicomdb.board (`boardName`, `boardContent`, `userName`, `regdate`)
-		values (#{boardName}, #{boardContent}, #{userName}, now());
+		insert into multicomdb.board (`boardName`, `boardContent`, `userName`, `regdate`, `boardType`)
+		values (#{boardName}, #{boardContent}, #{userName}, now(), #{boardType});
 	</insert>
 	
 	<update id="boardUpdate" parameterType="int">

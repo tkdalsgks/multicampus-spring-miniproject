@@ -2,22 +2,22 @@ package com.commu.team3.service;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.commu.team3.common.exception.UnauthorizedException;
 import com.commu.team3.dao.IBoardDAO;
+import com.commu.team3.dao.IMemberDAO;
 import com.commu.team3.dto.BoardDTO;
+import com.commu.team3.dto.MemberDTO;
 
 /**
  * @author Seongil, Yoon
  * @author Ena, Yoon
- * @author Seung-hyun, Kim
  */
 @Service("iboardservice")
 public class IBoardServiceImpl implements IBoardService {
@@ -26,6 +26,9 @@ public class IBoardServiceImpl implements IBoardService {
 	@Autowired
 	@Qualifier("iboarddao")
 	IBoardDAO dao;
+
+	@Inject
+	IMemberDAO memberDao;
 
 	@Autowired
 	HttpSession websession;
@@ -57,7 +60,19 @@ public class IBoardServiceImpl implements IBoardService {
 
 	@Override
 	public void boardInsert(BoardDTO dto) {
-		dao.boardInsert(dto);
+		String userId = (String) websession.getAttribute("userId");
+		// 등록하기전에 사용자가 있는지 먼저확인
+		MemberDTO memberDto = memberDao.memberView(userId);
+
+		if (userId == null || memberDto == null) {
+			// 로그인하지 않앗으면 권한없음,
+			throw new UnauthorizedException(String.format("unauthorized you"));
+		} else {
+			// 권한 있으므로 등록
+			dto.setUserName(memberDto.getUserName());
+			dao.boardInsert(dto);
+		}
+
 	}
 
 	@Override
@@ -67,7 +82,17 @@ public class IBoardServiceImpl implements IBoardService {
 
 	@Override
 	public void boardUpdate(BoardDTO dto) {
-		dao.boardUpdate(dto);
+		// 게시글의 userId 조회
+		String boardUserId = dao.BoardUserId(dto.getBoardNo());
+
+		if (websession.getAttribute("userId") == null
+				|| websession.getAttribute("userId").equals(boardUserId) == false) {
+			// 게시글의 작성자와 session객체의 작성자를 비교하기 위함. 다르면 권한없음
+			throw new UnauthorizedException(String.format("unauthorized you"));
+		} else {
+			// 권한 있으므로 수정
+			dao.boardUpdate(dto);
+		}
 	}
 
 	@Override

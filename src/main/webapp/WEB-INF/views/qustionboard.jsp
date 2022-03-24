@@ -1,63 +1,76 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1" />
-    <title>질문 게시판 | 멀캠 커뮤니티</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="resources/css/styles.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1" />
+  <title>질문 게시판 | 멀캠 커뮤니티</title>
 
-    <!-- JAVASCRIPT -->
-    <script src="resources/js/jquery-3.6.0.min.js"></script>
-  </head>
+  <!-- CSS -->
+  <link rel="stylesheet" href="resources/css/styles.css" />
 
-  <body>
-    <!-- header import -->
-    <%@ include file="/WEB-INF/views/include/header.jsp" %>
-    <!-- end of header import -->
+  <!-- JAVASCRIPT -->
+  <script src="resources/js/jquery-3.6.0.min.js"></script>
+</head>
 
-    <script type="text/javascript">
-      $(document).ready(function () {
-          // load메소드로 페이지를 불러오고 DOM을 조작할려면 콜백함수 사용
-          let html = `
-          <li id="boardWrite">
-              <a href="questioninput">질문 작성</a>
-          </li>`;
-
-          $("#menu ul").append(html);
-
-        });
-
-      });
-    </script>
-
-    <section class="boardSection">
-      <ul class="boardList">
-        <li class="boardHead">
-          <span style="margin-left: 13px">번호</span>
-          <span style="margin-left: 30px">제목</span>
-          <span></span>
-          <span>내용</span>
-          <span></span>
-          <span style="margin-left: 20px">작성자</span>
-          <span></span>
-          <span>작성일</span>
-          <span></span>
-          <span style="margin-right: 30px">조회수</span>
-          <span style="width: max-content"></span>
-          <span></span>
+<body>
+  <!-- header import -->
+  <%@ include file="/WEB-INF/views/include/header.jsp" %>
+  <!-- end of header import -->
+  <section class="boardSection">
+    <ul class="boardList">
+      <li class="boardHead">
+        <span style="margin-left: 13px">번호</span>
+        <span style="margin-left: 30px">제목</span>
+        <span></span>
+        <span>내용</span>
+        <span></span>
+        <span style="margin-left: 20px">작성자</span>
+        <span></span>
+        <span>작성일</span>
+        <span></span>
+        <span style="margin-right: 30px">조회수</span>
+        <span style="width: max-content"></span>
+        <span></span>
+      </li>
+      <c:forEach items="${boardList}" var="board">
+        <li class="boardLine" value=${board.boardNo}>
+          <div>
+            <a class="contents" id="boardInfo" name="boardInfo" href="boarddetail?boardNo=${board.boardNo}">
+              <span>${board.boardNo}</span>
+              <span>${board.boardName}</span>
+              <span>${board.boardContent}</span>
+              <span>${board.userName}</span>
+              <span id="timeForToday">${board.regdate}</span>
+            </a>
+          </div>
+          <div>
+            <a class="btnClass" id="alterBtn" name="alterBtn" href="boardupdate?boardNo=${board.boardNo}">
+              질문 수정
+            </a>
+            <a class="btnClass" id="delBtn" name="delBtn">
+              질문 삭제
+            </a>
+          </div>
         </li>
-        <!-- JS 영역 -->
-       
-      </ul>
-    </section>
+      </c:forEach>
+    </ul>
+    <div id="boardPageNum">
+      <!-- JS 영역 -->
+    </div>
+  </section>
 
-    <!-- footer import -->
-    <%@ include file="/WEB-INF/views/include/footer.jsp" %>
-    <!-- end of footer import -->
+  <!-- footer import -->
+  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+  <!-- end of footer import -->
 
-    <script type="text/javascript" src="resources/js/qustionboard_list.js"></script>
-  </body>
+  <script type="text/javascript" src="resources/js/qustionboard_list.js"></script>
+
+  <script>
+    pagelistReady( ${pagenum} )
+  </script>
+</body>
+
 </html>

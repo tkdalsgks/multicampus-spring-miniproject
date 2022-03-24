@@ -223,13 +223,13 @@
           <tr>
             <td class="col1">이름</td>
             <td class="col2">
-              <input type="text" name="userName" id="userName" maxlength="5" class="col2input" />
+              <input type="text" name="userName" id="userName" maxlength="12" class="col2input" />
             </td>
           </tr>
           <tr>
             <td class="col1">이메일</td>
             <td class="col2">
-              <input type="text" name="userEmail" id="userEmail" maxlength="14" class="col2input" />
+              <input type="text" name="userEmail" id="userEmail" maxlength="50" class="col2input" />
               <button class="but1" type="button" id="checkEmail" onclick="email_Check()">이메일확인</button>
               <br />
               <span id="email_result"></span>

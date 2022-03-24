@@ -19,19 +19,6 @@
   <!-- header import -->
   <%@ include file="/WEB-INF/views/include/header.jsp" %>
   <!-- end of header import -->
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      // load메소드로 페이지를 불러오고 DOM을 조작할려면 콜백함수 사용
-      let html = `
-          <li id="boardWrite">
-              <a href="freeinput">글 작성</a>
-          </li>`;
-
-      $("#menu ul").append(html);
-    });
-  </script>
-
   <section class="boardSection">
     <ul class="boardList">
       <li class="boardHead">
@@ -51,7 +38,7 @@
       <c:forEach items="${boardList}" var="board">
         <li class="boardLine" value=${board.boardNo}>
           <div>
-            <a class="contents" id="boardInfo" name="boardInfo" href="free_view.html">
+            <a class="contents" id="boardInfo" name="boardInfo" href="boarddetail?boardNo=${board.boardNo}">
               <span >${board.boardNo}</span>
               <span>${board.boardName}</span>
               <span>${board.boardContent}</span>
@@ -69,7 +56,6 @@
           </div>
         </li>
       </c:forEach>
-      <!-- JS 영역 -->
     </ul>
     <div id="boardPageNum">
       <!-- JS 영역 -->

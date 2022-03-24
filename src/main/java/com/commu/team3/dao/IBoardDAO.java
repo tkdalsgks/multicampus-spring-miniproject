@@ -11,7 +11,6 @@ import com.commu.team3.dto.BoardDTO;
 /**
  * @author Seongil, Yoon
  * @author Ena, Yoon
- * @author Seung-hyun, Kim
  */
 
 //  root-context.xml에 Mapper스캔 등록, 없으면 빈생성 오류
