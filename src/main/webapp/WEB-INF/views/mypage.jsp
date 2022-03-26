@@ -24,7 +24,7 @@
     		$("#btnUpdate").click(function() {
 	    		if(confirm("회원정보를 수정하시겠습니까?")) {
 		    		// 폼 내부의 데이터를 전송할 주소
-		    		document.form1.action="${path}/team3/update";
+		    		document.form1.action="${path}/update";
 		    		document.form1.submit();	// 제출
 	    		}
     		});
@@ -40,7 +40,7 @@
     				}
     				if($("#userPwd").val() == $("#userPwd").val()) {
     					// 폼 내부의 데이터를 전송할 주소
-		    			document.form1.action="${path}/team3/delete";
+		    			document.form1.action="${path}/delete";
 		    			document.form1.submit();	// 제출   
     				}
     			}

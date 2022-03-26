@@ -32,7 +32,7 @@
     				return;
     			}
     			// 폼 내부의 데이터를 전송할 주소
-    			document.form1.action="${path}/team3/user";
+    			document.form1.action="${path}/user";
     			document.form1.submit();	// 제출
     		});
     	});
@@ -78,8 +78,8 @@
           </c:if>
         </form>
         <div style="text-align: center;">
-          <button type="submit" class="login" id="btnRegister" onclick="location.href='/team3/find'">비밀번호 찾기</button>
-          <button type="submit" class="login" id="btnRegister" onclick="location.href='/team3/agreement'">회원가입</button>
+          <button type="submit" class="login" id="btnRegister" onclick="location.href='/find'">비밀번호 찾기</button>
+          <button type="submit" class="login" id="btnRegister" onclick="location.href='/agreement'">회원가입</button>
         </div>
       </div>
     </section>
